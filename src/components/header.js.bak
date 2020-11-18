@@ -1,0 +1,328 @@
+import React, { useContext, useState } from "react"
+import CssBaseline from "@material-ui/core/CssBaseline"
+import clsx from "clsx"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import AppBar from "@material-ui/core/AppBar"
+import Toolbar from "@material-ui/core/Toolbar"
+import Typography from "@material-ui/core/Typography"
+import IconButton from "@material-ui/core/IconButton"
+import MenuIcon from "@material-ui/icons/Menu"
+import useScrollTrigger from "@material-ui/core/useScrollTrigger"
+import Slide from "@material-ui/core/Slide"
+import { Link } from "gatsby"
+import SelectLanguage from "./selectLanguage"
+import Drawer from "./drawer"
+import withWidth from "@material-ui/core/withWidth"
+import Hidden from "@material-ui/core/Hidden"
+import PropTypes from "prop-types"
+import Grid from "@material-ui/core/Grid"
+import Button from "@material-ui/core/Button"
+import Menu from "@material-ui/core/Menu"
+import MenuItem from "@material-ui/core/MenuItem"
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
+import ExpandLessIcon from "@material-ui/icons/ExpandLess"
+
+const window = require("global/window")
+
+const drawerWidth = window.innerWidth <= 599 ? "100vw" : 450
+
+function HideOnScroll(props) {
+  const { children } = props
+  const trigger = useScrollTrigger()
+
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  )
+}
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: "flex",
+    flexGrow: 1,
+  },
+  appBar: {
+    backgroundColor: theme.palette.primary.main,
+    transition: theme.transitions.create(["margin", "width"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  appBarShiftToRight: {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: 100,
+    transition: theme.transitions.create(["margin", "width"], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  appBarShiftToLeft: {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginRight: drawerWidth,
+    transition: theme.transitions.create(["margin", "width"], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  menuLeftButton: {
+    // marginRight: theme.spacing(2),
+  },
+  menuRightButton: {
+    paddingLeft: theme.spacing(1),
+  },
+
+  hide: {
+    display: "none",
+  },
+  logo: {
+    // flexGrow: 1,
+    // display: "inline",
+    marginTop: "1%",
+  },
+  toolbar: {
+    // display: "flex",
+    // justifyContent: "space-between",
+    borderBottom: "4px solid black",
+  },
+  link: {
+    textDecoration: "none",
+    "&:visited": {
+      color: "white",
+    },
+    "&:active": {
+      color: theme.palette.primary.light,
+    },
+  },
+  menu: {},
+}))
+
+function Header(props) {
+  const classes = useStyles()
+  const theme = useTheme()
+
+  const [openDrawer, setOpenDrawer] = useState(false)
+
+  const handleDrawerOpen = () => {
+    setOpenDrawer(true)
+    document.body.style.position = "fixed"
+  }
+  const handleDrawerClose = () => {
+    setOpenDrawer(false)
+    const scrollY = document.body.style.top
+    document.body.style.position = ""
+  }
+
+  const [anchorEl2, setAnchorEl2] = React.useState(null)
+  const [anchorEl3, setAnchorEl3] = React.useState(null)
+  const [anchorEl4, setAnchorEl4] = React.useState(null)
+
+  function handleClick2(event) {
+    if (anchorEl2 !== event.currentTarget) {
+      setAnchorEl2(event.currentTarget)
+    }
+  }
+  function handleClose2() {
+    setAnchorEl2(null)
+  }
+
+  function handleClick3(event) {
+    if (anchorEl3 !== event.currentTarget) {
+      setAnchorEl3(event.currentTarget)
+    }
+  }
+  function handleClose3() {
+    setAnchorEl3(null)
+  }
+
+  function handleClick4(event) {
+    if (anchorEl4 !== event.currentTarget) {
+      setAnchorEl4(event.currentTarget)
+    }
+  }
+  function handleClose4() {
+    setAnchorEl4(null)
+  }
+
+  return (
+    <div className={classes.root}>
+      <CssBaseline />
+      <HideOnScroll {...props}>
+        <AppBar
+          position="fixed"
+          className={clsx(classes.appBar, {
+            [classes.appBarShiftToLeft]: openDrawer,
+          })}
+        >
+          <Toolbar className={classes.toolbar}>
+            <Grid container spacing={3}>
+              <Grid
+                item
+                xs={12}
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <Typography variant="h6" className={classes.logo}>
+                  <Link to="/" className={classes.link}>
+                    www.salvegeorgia.com
+                  </Link>
+                </Typography>
+
+                <div>
+                  <SelectLanguage />
+
+                  <Hidden mdUp>
+                    <IconButton
+                      color="inherit"
+                      aria-label="open drawer"
+                      onClick={handleDrawerOpen}
+                      edge="end"
+                      className={clsx(
+                        classes.menuLeftButton,
+                        openDrawer && classes.hide
+                      )}
+                    >
+                      <MenuIcon />
+                    </IconButton>
+                  </Hidden>
+                </div>
+              </Grid>
+
+              <Hidden smDown>
+                {/* <Typography className={classes.menu} variant="h6"> */}
+                <Grid item xs={12} container>
+                  <Grid item xs={3}>
+                    <Button
+                    // aria-owns={anchorEl1 ? "simple-menu-1" : undefined}
+                    // aria-haspopup="true"
+                    // onClick={handleClick1}
+                    // onMouseOver={handleClick1}
+                    >
+                      О нас
+                    </Button>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Button
+                      aria-owns={anchorEl2 ? "simple-menu-2" : undefined}
+                      aria-haspopup="true"
+                      onClick={handleClick2}
+                      onMouseOver={handleClick2}
+                      endIcon={
+                        anchorEl2 === null ? (
+                          <ExpandMoreIcon />
+                        ) : (
+                          <ExpandLessIcon />
+                        )
+                      }
+                    >
+                      Медицинские услуги
+                    </Button>
+                    <Menu
+                      anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+                      transformOrigin={{ vertical: "top", horizontal: "left" }}
+                      id="simple-menu-2"
+                      anchorEl={anchorEl2}
+                      open={Boolean(anchorEl2)}
+                      onClose={handleClose2}
+                      MenuListProps={{ onMouseLeave: handleClose2 }}
+                      getContentAnchorEl={null}
+                    >
+                      <MenuItem onClick={handleClose2}>
+                        Пластическая хирургия
+                      </MenuItem>
+                      <MenuItem onClick={handleClose2}>
+                        Косметологические процедуры
+                      </MenuItem>
+                      <MenuItem onClick={handleClose2}>
+                        Зубные имплантаты
+                      </MenuItem>
+                      <MenuItem onClick={handleClose2}>Массаж</MenuItem>
+                      <MenuItem onClick={handleClose2}>
+                        Бальнеологические процедуры
+                      </MenuItem>
+                      <MenuItem onClick={handleClose2}>
+                        Экстракорпоральное оплодотворение
+                      </MenuItem>
+                    </Menu>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Button
+                      aria-owns={anchorEl3 ? "simple-menu-3" : undefined}
+                      aria-haspopup="true"
+                      onClick={handleClick3}
+                      onMouseOver={handleClick3}
+                      endIcon={
+                        anchorEl3 === null ? (
+                          <ExpandMoreIcon />
+                        ) : (
+                          <ExpandLessIcon />
+                        )
+                      }
+                    >
+                      Юридические услуги
+                    </Button>
+                    <Menu
+                      anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+                      transformOrigin={{ vertical: "top", horizontal: "left" }}
+                      id="simple-menu-3"
+                      anchorEl={anchorEl3}
+                      open={Boolean(anchorEl3)}
+                      onClose={handleClose3}
+                      MenuListProps={{ onMouseLeave: handleClose3 }}
+                      getContentAnchorEl={null}
+                    >
+                      <MenuItem onClick={handleClose3}>
+                        Регистрация юридических лиц
+                      </MenuItem>
+                      <MenuItem onClick={handleClose3}>Арбитраж</MenuItem>
+                    </Menu>
+                  </Grid>
+
+                  <Grid item xs={3}>
+                    <Button
+                      aria-owns={anchorEl4 ? "simple-menu-4 " : undefined}
+                      aria-haspopup="true"
+                      onClick={handleClick4}
+                      onMouseOver={handleClick4}
+                      endIcon={
+                        anchorEl4 === null ? (
+                          <ExpandMoreIcon />
+                        ) : (
+                          <ExpandLessIcon />
+                        )
+                      }
+                    >
+                      Работа за границей
+                    </Button>
+                    <Menu
+                      anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+                      transformOrigin={{ vertical: "top", horizontal: "left" }}
+                      id="simple-menu-4"
+                      anchorEl={anchorEl4}
+                      open={Boolean(anchorEl4)}
+                      onClose={handleClose4}
+                      MenuListProps={{ onMouseLeave: handleClose4 }}
+                      getContentAnchorEl={null}
+                    >
+                      <MenuItem onClick={handleClose4}>Наем врачей</MenuItem>
+                      <MenuItem onClick={handleClose4}>Наем медсестер</MenuItem>
+                      <MenuItem onClick={handleClose4}>Наем медсестер</MenuItem>
+                      <MenuItem onClick={handleClose4}>Для студентов</MenuItem>
+                    </Menu>
+                  </Grid>
+                  {/* </Typography> */}
+                </Grid>
+              </Hidden>
+            </Grid>
+          </Toolbar>
+        </AppBar>
+      </HideOnScroll>
+
+      <Drawer onClose={handleDrawerClose} open={openDrawer} />
+    </div>
+  )
+}
+
+Header.propTypes = {
+  width: PropTypes.oneOf(["lg", "md", "sm", "xl", "xs"]).isRequired,
+}
+export default withWidth()(Header)
