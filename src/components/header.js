@@ -111,10 +111,15 @@ const useStyles = makeStyles(theme => ({
   popper: {
     minWidth: "25vw",
     zIndex: theme.zIndex.drawer + 99,
+    marginTop: 4,
+  },
+  menuItem: {
+    "&:hover": {
+      fontWeight: "bold",
+      color: theme.palette.primary.main,
+    },
   },
 }))
-
-const timeoutLength = 300
 
 function Header(props) {
   const classes = useStyles()
@@ -145,7 +150,7 @@ function Header(props) {
     anchorEl4: null,
   })
 
-  const [openBackdrop, setOpenBackdrop] = React.useState(false)
+  const [openBackdrop, setOpenBackdrop] = useState(false)
   const handleCloseBackdrop = () => {
     setOpenBackdrop(false)
   }
@@ -328,20 +333,40 @@ function Header(props) {
                           // }}
                           // getContentAnchorEl={null}
                         >
-                          <MenuItem onClick={handleMenuClose2}>
+                          <MenuItem
+                            onClick={handleMenuClose2}
+                            className={classes.menuItem}
+                          >
                             Пластическая хирургия
                           </MenuItem>
-                          <MenuItem onClick={handleMenuClose2}>
+                          <MenuItem
+                            onClick={handleMenuClose2}
+                            className={classes.menuItem}
+                          >
                             Косметологические процедуры
                           </MenuItem>
-                          <MenuItem onClick={handleMenuClose2}>
+                          <MenuItem
+                            onClick={handleMenuClose2}
+                            className={classes.menuItem}
+                          >
                             Зубные имплантаты
                           </MenuItem>
-                          <MenuItem onClick={handleMenuClose2}>Массаж</MenuItem>
-                          <MenuItem onClick={handleMenuClose2}>
+                          <MenuItem
+                            onClick={handleMenuClose2}
+                            className={classes.menuItem}
+                          >
+                            Массаж
+                          </MenuItem>
+                          <MenuItem
+                            onClick={handleMenuClose2}
+                            className={classes.menuItem}
+                          >
                             Бальнеологические процедуры
                           </MenuItem>
-                          <MenuItem onClick={handleMenuClose2}>
+                          <MenuItem
+                            onClick={handleMenuClose2}
+                            className={classes.menuItem}
+                          >
                             Экстракорпоральное оплодотворение
                           </MenuItem>
                         </MenuList>
@@ -393,10 +418,16 @@ function Header(props) {
                           MenuListProps={{ onMouseLeave: handleMenuClose3 }}
                           // getContentAnchorEl={null}
                         >
-                          <MenuItem onClick={handleMenuClose3}>
+                          <MenuItem
+                            onClick={handleMenuClose3}
+                            className={classes.menuItem}
+                          >
                             Регистрация юридических лиц
                           </MenuItem>
-                          <MenuItem onClick={handleMenuClose3}>
+                          <MenuItem
+                            onClick={handleMenuClose3}
+                            className={classes.menuItem}
+                          >
                             Арбитраж
                           </MenuItem>
                         </MenuList>
@@ -451,16 +482,28 @@ function Header(props) {
                           MenuListProps={{ onMouseLeave: handleMenuClose4 }}
                           // getContentAnchorEl={null}
                         >
-                          <MenuItem onClick={handleMenuClose4}>
+                          <MenuItem
+                            onClick={handleMenuClose4}
+                            className={classes.menuItem}
+                          >
                             Наем врачей
                           </MenuItem>
-                          <MenuItem onClick={handleMenuClose4}>
+                          <MenuItem
+                            onClick={handleMenuClose4}
+                            className={classes.menuItem}
+                          >
                             Наем медсестер
                           </MenuItem>
-                          <MenuItem onClick={handleMenuClose4}>
+                          <MenuItem
+                            onClick={handleMenuClose4}
+                            className={classes.menuItem}
+                          >
                             Наем медсестер
                           </MenuItem>
-                          <MenuItem onClick={handleMenuClose4}>
+                          <MenuItem
+                            onClick={handleMenuClose4}
+                            className={classes.menuItem}
+                          >
                             Для студентов
                           </MenuItem>
                         </MenuList>
