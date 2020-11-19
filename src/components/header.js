@@ -29,6 +29,7 @@ import Backdrop from "@material-ui/core/Backdrop"
 const window = require("global/window")
 
 const drawerWidth = window.innerWidth <= 599 ? "100vw" : 450
+const logoMarginTop = window.innerWidth <= 959 ? "2%" : 0
 
 function HideOnScroll(props) {
   const { children } = props
@@ -69,9 +70,7 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
-  menuLeftButton: {
-    // marginRight: theme.spacing(2),
-  },
+  menuLeftButton: {},
   menuRightButton: {
     paddingLeft: theme.spacing(1),
   },
@@ -82,7 +81,7 @@ const useStyles = makeStyles(theme => ({
   logo: {
     // flexGrow: 1,
     // display: "inline",
-    marginTop: "1%",
+    marginTop: logoMarginTop,
   },
   toolbar: {
     // display: "flex",
@@ -223,7 +222,7 @@ function Header(props) {
           })}
         >
           <Toolbar className={classes.toolbar}>
-            <Grid container spacing={3}>
+            <Grid container spacing={1}>
               <Grid
                 item
                 xs={12}
@@ -231,7 +230,7 @@ function Header(props) {
               >
                 <Typography variant="h6" className={classes.logo}>
                   <Link to="/" className={classes.link}>
-                    www.salvegeorgia.com
+                    salvegeorgia.com
                   </Link>
                 </Typography>
 
@@ -270,6 +269,7 @@ function Header(props) {
                   <Grid item xs={3}>
                     <Button
                       className={classes.menuBtn}
+                      style={{ left: "45%" }}
                       // aria-owns={anchorEl1 ? "simple-menu-1" : undefined}
                       // aria-haspopup="true"
                       // onClick={handleClick1}

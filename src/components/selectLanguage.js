@@ -11,7 +11,7 @@ import { LanguageContext } from "../components/layout"
 
 const window = require("global/window")
 
-const languageSwitcherMarginTop = window.innerWidth <= 599 ? "8%" : "25%"
+const languageSwitcherMarginTop = window.innerWidth <= 959 ? "10%" : "7%"
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -19,7 +19,8 @@ const useStyles = makeStyles(theme => ({
     // minWidth: 80,
     margin: 0,
     marginTop: languageSwitcherMarginTop,
-    paddingRight: 5,
+
+    left: "10%",
   },
   icon: {
     paddingLeft: 1,
