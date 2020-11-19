@@ -118,48 +118,52 @@ function Header(props) {
     document.body.style.position = ""
   }
 
-  const [state, setState] = useState({
+  const [state2, setState2] = useState({
     open2: false,
-    open3: false,
-    open4: false,
     anchorEl2: null,
+  })
+  const [state3, setState3] = useState({
+    open3: false,
     anchorEl3: null,
+  })
+  const [state4, setState4] = useState({
+    open4: false,
     anchorEl4: null,
   })
 
   function handleMenuOpen2(event) {
-    setState({
+    setState2({
       open2: true,
       anchorEl2: event.currentTarget,
     })
   }
   function handleMenuClose2() {
-    setState({
+    setState2({
       open2: false,
       anchorEl2: null,
     })
   }
 
   function handleMenuOpen3(event) {
-    setState({
+    setState3({
       open3: true,
       anchorEl3: event.currentTarget,
     })
   }
   function handleMenuClose3() {
-    setState({
+    setState3({
       open3: false,
       anchorEl3: null,
     })
   }
   function handleMenuOpen4(event) {
-    setState({
+    setState4({
       open4: true,
       anchorEl4: event.currentTarget,
     })
   }
   function handleMenuClose4() {
-    setState({
+    setState4({
       open4: false,
       anchorEl4: null,
     })
@@ -222,24 +226,32 @@ function Header(props) {
                 >
                   <Grid item xs={3}>
                     <Button
-                    // aria-owns={anchorEl1 ? "simple-menu-1" : undefined}
-                    // aria-haspopup="true"
-                    // onClick={handleClick1}
-                    // onMouseOver={handleClick1}
+                      // aria-owns={anchorEl1 ? "simple-menu-1" : undefined}
+                      // aria-haspopup="true"
+                      // onClick={handleClick1}
+                      onMouseOver={e => {
+                        handleMenuClose2(e)
+                        handleMenuClose3(e)
+                        handleMenuClose4(e)
+                      }}
                     >
                       О нас
                     </Button>
                   </Grid>
                   <Grid item xs={3}>
                     <Button
-                      aria-owns={state.open2 ? "simple-menu-2" : undefined}
+                      aria-owns={state2.open2 ? "simple-menu-2" : undefined}
                       aria-haspopup="true"
                       // onClick={handleClick2}
                       // onMouseOver={handleClick2}
-                      onMouseOver={handleMenuOpen2}
+                      onMouseOver={e => {
+                        handleMenuOpen2(e)
+                        handleMenuClose3(e)
+                        handleMenuClose4(e)
+                      }}
                       // onMouseLeave={leaveButton2}
                       endIcon={
-                        state.open2 === false ? (
+                        state2.anchorEl2 === null ? (
                           <ExpandMoreIcon />
                         ) : (
                           <ExpandLessIcon />
@@ -249,13 +261,14 @@ function Header(props) {
                       Медицинские услуги
                     </Button>
                     <Popper
-                      open={state.open2}
-                      anchorEl={state.anchorEl2}
+                      open={state2.open2}
+                      anchorEl={state2.anchorEl2}
                       id="menu-list-grow-2"
+                      style={{ minWidth: "25vw" }}
                     >
                       <Paper>
                         <MenuList
-                          transitionDuration={100}
+                          // transitionDuration={100}
                           anchorOrigin={{
                             vertical: "bottom",
                             horizontal: "center",
@@ -265,8 +278,8 @@ function Header(props) {
                           //   horizontal: "center",
                           // }}
                           id="simple-menu-2"
-                          anchorEl={state.anchorEl2}
-                          open={Boolean(state.anchorEl2)}
+                          anchorEl={state2.anchorEl2}
+                          open={Boolean(state2.anchorEl2)}
                           onClose={handleMenuClose2}
                           MenuListProps={{ onMouseLeave: handleMenuClose2 }}
                           // MenuListProps={{
@@ -297,12 +310,16 @@ function Header(props) {
                   </Grid>
                   <Grid item xs={3}>
                     <Button
-                      aria-owns={state.anchorEl3 ? "simple-menu-3" : undefined}
+                      aria-owns={state3.anchorEl3 ? "simple-menu-3" : undefined}
                       aria-haspopup="true"
                       // onClick={handleMenuClose2}
-                      onMouseOver={handleMenuOpen3}
+                      onMouseOver={e => {
+                        handleMenuOpen3(e)
+                        handleMenuClose2(e)
+                        handleMenuClose4(e)
+                      }}
                       endIcon={
-                        state.anchorEl3 === null ? (
+                        state3.anchorEl3 === null ? (
                           <ExpandMoreIcon />
                         ) : (
                           <ExpandLessIcon />
@@ -312,13 +329,14 @@ function Header(props) {
                       Юридические услуги
                     </Button>
                     <Popper
-                      open={state.open3}
-                      anchorEl={state.anchorEl3}
+                      open={state3.open3}
+                      anchorEl={state3.anchorEl3}
                       id="menu-list-grow-3"
+                      style={{ minWidth: "25vw" }}
                     >
                       <Paper>
                         <MenuList
-                          transitionDuration={100}
+                          // transitionDuration={100}
                           anchorOrigin={{
                             vertical: "bottom",
                             horizontal: "center",
@@ -328,8 +346,8 @@ function Header(props) {
                           //   horizontal: "center",
                           // }}
                           id="simple-menu-3"
-                          anchorEl={state.anchorEl3}
-                          open={Boolean(state.anchorEl3)}
+                          anchorEl={state3.anchorEl3}
+                          open={Boolean(state3.anchorEl3)}
                           onClose={handleMenuClose3}
                           MenuListProps={{ onMouseLeave: handleMenuClose3 }}
                           // getContentAnchorEl={null}
@@ -347,12 +365,18 @@ function Header(props) {
 
                   <Grid item xs={3}>
                     <Button
-                      aria-owns={state.anchorEl4 ? "simple-menu-4 " : undefined}
+                      aria-owns={
+                        state4.anchorEl4 ? "simple-menu-4 " : undefined
+                      }
                       aria-haspopup="true"
                       // onClick={handleClick4}
-                      onMouseOver={handleMenuOpen4}
+                      onMouseOver={e => {
+                        handleMenuOpen4(e)
+                        handleMenuClose2(e)
+                        handleMenuClose3(e)
+                      }}
                       endIcon={
-                        state.anchorEl4 === null ? (
+                        state4.anchorEl4 === null ? (
                           <ExpandMoreIcon />
                         ) : (
                           <ExpandLessIcon />
@@ -362,13 +386,14 @@ function Header(props) {
                       Работа за границей
                     </Button>
                     <Popper
-                      open={state.open4}
-                      anchorEl={state.anchorEl4}
+                      open={state4.open4}
+                      anchorEl={state4.anchorEl4}
                       id="menu-list-grow-4"
+                      style={{ minWidth: "25vw" }}
                     >
                       <Paper>
                         <MenuList
-                          transitionDuration={100}
+                          // transitionDuration={100}
                           anchorOrigin={{
                             vertical: "bottom",
                             horizontal: "center",
@@ -378,8 +403,8 @@ function Header(props) {
                           //   horizontal: "center",
                           // }}
                           id="simple-menu-4"
-                          anchorEl={state.anchorEl4}
-                          open={Boolean(state.anchorEl4)}
+                          anchorEl={state4.anchorEl4}
+                          open={Boolean(state4.anchorEl4)}
                           onClose={handleMenuClose4}
                           MenuListProps={{ onMouseLeave: handleMenuClose4 }}
                           // getContentAnchorEl={null}

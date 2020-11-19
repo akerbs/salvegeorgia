@@ -21,6 +21,9 @@ import Menu from "@material-ui/core/Menu"
 import MenuItem from "@material-ui/core/MenuItem"
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 import ExpandLessIcon from "@material-ui/icons/ExpandLess"
+import Popper from "@material-ui/core/Popper"
+import Paper from "@material-ui/core/Paper"
+import MenuList from "@material-ui/core/MenuList"
 
 const window = require("global/window")
 
@@ -97,6 +100,8 @@ const useStyles = makeStyles(theme => ({
   menu: {},
 }))
 
+const timeoutLength = 300
+
 function Header(props) {
   const classes = useStyles()
   const theme = useTheme()
@@ -113,35 +118,51 @@ function Header(props) {
     document.body.style.position = ""
   }
 
-  const [anchorEl2, setAnchorEl2] = React.useState(null)
-  const [anchorEl3, setAnchorEl3] = React.useState(null)
-  const [anchorEl4, setAnchorEl4] = React.useState(null)
+  const [state, setState] = useState({
+    open2: false,
+    open3: false,
+    open4: false,
+    anchorEl2: null,
+    anchorEl3: null,
+    anchorEl4: null,
+  })
 
-  function handleClick2(event) {
-    if (anchorEl2 !== event.currentTarget) {
-      setAnchorEl2(event.currentTarget)
-    }
+  function handleMenuOpen2(event) {
+    setState({
+      open2: true,
+      anchorEl2: event.currentTarget,
+    })
   }
-  function handleClose2() {
-    setAnchorEl2(null)
-  }
-
-  function handleClick3(event) {
-    if (anchorEl3 !== event.currentTarget) {
-      setAnchorEl3(event.currentTarget)
-    }
-  }
-  function handleClose3() {
-    setAnchorEl3(null)
+  function handleMenuClose2() {
+    setState({
+      open2: false,
+      anchorEl2: null,
+    })
   }
 
-  function handleClick4(event) {
-    if (anchorEl4 !== event.currentTarget) {
-      setAnchorEl4(event.currentTarget)
-    }
+  function handleMenuOpen3(event) {
+    setState({
+      open3: true,
+      anchorEl3: event.currentTarget,
+    })
   }
-  function handleClose4() {
-    setAnchorEl4(null)
+  function handleMenuClose3() {
+    setState({
+      open3: false,
+      anchorEl3: null,
+    })
+  }
+  function handleMenuOpen4(event) {
+    setState({
+      open4: true,
+      anchorEl4: event.currentTarget,
+    })
+  }
+  function handleMenuClose4() {
+    setState({
+      open4: false,
+      anchorEl4: null,
+    })
   }
 
   return (
@@ -189,25 +210,40 @@ function Header(props) {
 
               <Hidden smDown>
                 {/* <Typography className={classes.menu} variant="h6"> */}
-                <Grid item xs={12} container>
+                <Grid
+                  item
+                  xs={12}
+                  container
+                  onMouseLeave={e => {
+                    handleMenuClose2(e)
+                    handleMenuClose3(e)
+                    handleMenuClose4(e)
+                  }}
+                >
                   <Grid item xs={3}>
                     <Button
-                    // aria-owns={anchorEl1 ? "simple-menu-1" : undefined}
-                    // aria-haspopup="true"
-                    // onClick={handleClick1}
-                    // onMouseOver={handleClick1}
+                      // aria-owns={anchorEl1 ? "simple-menu-1" : undefined}
+                      // aria-haspopup="true"
+                      // onClick={handleClick1}
+                      onMouseOver={e => {
+                        handleMenuClose2(e)
+                        handleMenuClose3(e)
+                        handleMenuClose4(e)
+                      }}
                     >
                       О нас
                     </Button>
                   </Grid>
                   <Grid item xs={3}>
                     <Button
-                      aria-owns={anchorEl2 ? "simple-menu-2" : undefined}
+                      aria-owns={state.open2 ? "simple-menu-2" : undefined}
                       aria-haspopup="true"
-                      onClick={handleClick2}
-                      onMouseOver={handleClick2}
+                      // onClick={handleClick2}
+                      // onMouseOver={handleClick2}
+                      onMouseOver={handleMenuOpen2}
+                      // onMouseLeave={leaveButton2}
                       endIcon={
-                        anchorEl2 === null ? (
+                        state.anchorEl2 === null ? (
                           <ExpandMoreIcon />
                         ) : (
                           <ExpandLessIcon />
@@ -216,42 +252,62 @@ function Header(props) {
                     >
                       Медицинские услуги
                     </Button>
-                    <Menu
-                      anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-                      transformOrigin={{ vertical: "top", horizontal: "left" }}
-                      id="simple-menu-2"
-                      anchorEl={anchorEl2}
-                      open={Boolean(anchorEl2)}
-                      onClose={handleClose2}
-                      MenuListProps={{ onMouseLeave: handleClose2 }}
-                      getContentAnchorEl={null}
+                    <Popper
+                      open={state.open2}
+                      anchorEl={state.anchorEl2}
+                      id="menu-list-grow-2"
+                      style={{ minWidth: "25vw" }}
                     >
-                      <MenuItem onClick={handleClose2}>
-                        Пластическая хирургия
-                      </MenuItem>
-                      <MenuItem onClick={handleClose2}>
-                        Косметологические процедуры
-                      </MenuItem>
-                      <MenuItem onClick={handleClose2}>
-                        Зубные имплантаты
-                      </MenuItem>
-                      <MenuItem onClick={handleClose2}>Массаж</MenuItem>
-                      <MenuItem onClick={handleClose2}>
-                        Бальнеологические процедуры
-                      </MenuItem>
-                      <MenuItem onClick={handleClose2}>
-                        Экстракорпоральное оплодотворение
-                      </MenuItem>
-                    </Menu>
+                      <Paper>
+                        <MenuList
+                          transitionDuration={100}
+                          anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "center",
+                          }}
+                          // transformOrigin={{
+                          //   vertical: "top",
+                          //   horizontal: "center",
+                          // }}
+                          id="simple-menu-2"
+                          anchorEl={state.anchorEl2}
+                          open={Boolean(state.anchorEl2)}
+                          onClose={handleMenuClose2}
+                          MenuListProps={{ onMouseLeave: handleMenuClose2 }}
+                          // MenuListProps={{
+                          //   onMouseEnter: enterMenu2,
+                          //   onMouseLeave: leaveMenu2,
+                          // }}
+                          // getContentAnchorEl={null}
+                        >
+                          <MenuItem onClick={handleMenuClose2}>
+                            Пластическая хирургия
+                          </MenuItem>
+                          <MenuItem onClick={handleMenuClose2}>
+                            Косметологические процедуры
+                          </MenuItem>
+                          <MenuItem onClick={handleMenuClose2}>
+                            Зубные имплантаты
+                          </MenuItem>
+                          <MenuItem onClick={handleMenuClose2}>Массаж</MenuItem>
+                          <MenuItem onClick={handleMenuClose2}>
+                            Бальнеологические процедуры
+                          </MenuItem>
+                          <MenuItem onClick={handleMenuClose2}>
+                            Экстракорпоральное оплодотворение
+                          </MenuItem>
+                        </MenuList>
+                      </Paper>
+                    </Popper>
                   </Grid>
                   <Grid item xs={3}>
                     <Button
-                      aria-owns={anchorEl3 ? "simple-menu-3" : undefined}
+                      aria-owns={state.anchorEl3 ? "simple-menu-3" : undefined}
                       aria-haspopup="true"
-                      onClick={handleClick3}
-                      onMouseOver={handleClick3}
+                      // onClick={handleMenuClose2}
+                      onMouseOver={handleMenuOpen3}
                       endIcon={
-                        anchorEl3 === null ? (
+                        state.anchorEl3 === null ? (
                           <ExpandMoreIcon />
                         ) : (
                           <ExpandLessIcon />
@@ -260,31 +316,49 @@ function Header(props) {
                     >
                       Юридические услуги
                     </Button>
-                    <Menu
-                      anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-                      transformOrigin={{ vertical: "top", horizontal: "left" }}
-                      id="simple-menu-3"
-                      anchorEl={anchorEl3}
-                      open={Boolean(anchorEl3)}
-                      onClose={handleClose3}
-                      MenuListProps={{ onMouseLeave: handleClose3 }}
-                      getContentAnchorEl={null}
+                    <Popper
+                      open={state.open3}
+                      anchorEl={state.anchorEl3}
+                      id="menu-list-grow-3"
+                      style={{ minWidth: "25vw" }}
                     >
-                      <MenuItem onClick={handleClose3}>
-                        Регистрация юридических лиц
-                      </MenuItem>
-                      <MenuItem onClick={handleClose3}>Арбитраж</MenuItem>
-                    </Menu>
+                      <Paper>
+                        <MenuList
+                          transitionDuration={100}
+                          anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "center",
+                          }}
+                          // transformOrigin={{
+                          //   vertical: "top",
+                          //   horizontal: "center",
+                          // }}
+                          id="simple-menu-3"
+                          anchorEl={state.anchorEl3}
+                          open={Boolean(state.anchorEl3)}
+                          onClose={handleMenuClose3}
+                          MenuListProps={{ onMouseLeave: handleMenuClose3 }}
+                          // getContentAnchorEl={null}
+                        >
+                          <MenuItem onClick={handleMenuClose3}>
+                            Регистрация юридических лиц
+                          </MenuItem>
+                          <MenuItem onClick={handleMenuClose3}>
+                            Арбитраж
+                          </MenuItem>
+                        </MenuList>
+                      </Paper>
+                    </Popper>
                   </Grid>
 
                   <Grid item xs={3}>
                     <Button
-                      aria-owns={anchorEl4 ? "simple-menu-4 " : undefined}
+                      aria-owns={state.anchorEl4 ? "simple-menu-4 " : undefined}
                       aria-haspopup="true"
-                      onClick={handleClick4}
-                      onMouseOver={handleClick4}
+                      // onClick={handleClick4}
+                      onMouseOver={handleMenuOpen4}
                       endIcon={
-                        anchorEl4 === null ? (
+                        state.anchorEl4 === null ? (
                           <ExpandMoreIcon />
                         ) : (
                           <ExpandLessIcon />
@@ -293,21 +367,45 @@ function Header(props) {
                     >
                       Работа за границей
                     </Button>
-                    <Menu
-                      anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-                      transformOrigin={{ vertical: "top", horizontal: "left" }}
-                      id="simple-menu-4"
-                      anchorEl={anchorEl4}
-                      open={Boolean(anchorEl4)}
-                      onClose={handleClose4}
-                      MenuListProps={{ onMouseLeave: handleClose4 }}
-                      getContentAnchorEl={null}
+                    <Popper
+                      open={state.open4}
+                      anchorEl={state.anchorEl4}
+                      id="menu-list-grow-4"
+                      style={{ minWidth: "25vw" }}
                     >
-                      <MenuItem onClick={handleClose4}>Наем врачей</MenuItem>
-                      <MenuItem onClick={handleClose4}>Наем медсестер</MenuItem>
-                      <MenuItem onClick={handleClose4}>Наем медсестер</MenuItem>
-                      <MenuItem onClick={handleClose4}>Для студентов</MenuItem>
-                    </Menu>
+                      <Paper>
+                        <MenuList
+                          transitionDuration={100}
+                          anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "center",
+                          }}
+                          // transformOrigin={{
+                          //   vertical: "top",
+                          //   horizontal: "center",
+                          // }}
+                          id="simple-menu-4"
+                          anchorEl={state.anchorEl4}
+                          open={Boolean(state.anchorEl4)}
+                          onClose={handleMenuClose4}
+                          MenuListProps={{ onMouseLeave: handleMenuClose4 }}
+                          // getContentAnchorEl={null}
+                        >
+                          <MenuItem onClick={handleMenuClose4}>
+                            Наем врачей
+                          </MenuItem>
+                          <MenuItem onClick={handleMenuClose4}>
+                            Наем медсестер
+                          </MenuItem>
+                          <MenuItem onClick={handleMenuClose4}>
+                            Наем медсестер
+                          </MenuItem>
+                          <MenuItem onClick={handleMenuClose4}>
+                            Для студентов
+                          </MenuItem>
+                        </MenuList>
+                      </Paper>
+                    </Popper>
                   </Grid>
                   {/* </Typography> */}
                 </Grid>
