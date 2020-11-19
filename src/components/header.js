@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import clsx from "clsx"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
@@ -24,6 +24,7 @@ import ExpandLessIcon from "@material-ui/icons/ExpandLess"
 import Popper from "@material-ui/core/Popper"
 import Paper from "@material-ui/core/Paper"
 import MenuList from "@material-ui/core/MenuList"
+import Backdrop from "@material-ui/core/Backdrop"
 
 const window = require("global/window")
 
@@ -97,7 +98,20 @@ const useStyles = makeStyles(theme => ({
       color: theme.palette.primary.light,
     },
   },
-  menu: {},
+  menuBtn: {
+    "&:hover": {
+      fontWeight: "bold",
+      color: "white",
+    },
+  },
+  backdrop: {
+    zIndex: 1,
+    color: "#fff",
+  },
+  popper: {
+    minWidth: "25vw",
+    zIndex: theme.zIndex.drawer + 99,
+  },
 }))
 
 const timeoutLength = 300
@@ -131,11 +145,33 @@ function Header(props) {
     anchorEl4: null,
   })
 
+  const [openBackdrop, setOpenBackdrop] = React.useState(false)
+  const handleCloseBackdrop = () => {
+    setOpenBackdrop(false)
+  }
+  const handleOpenBackdrop = () => {
+    setOpenBackdrop(true)
+  }
+
+  useEffect(
+    e => {
+      if (
+        state2.open2 === false &&
+        state3.open3 === false &&
+        state4.open4 === false
+      ) {
+        handleCloseBackdrop(e)
+      }
+    },
+    [state2, state3, state4]
+  )
+
   function handleMenuOpen2(event) {
     setState2({
       open2: true,
       anchorEl2: event.currentTarget,
     })
+    handleOpenBackdrop()
   }
   function handleMenuClose2() {
     setState2({
@@ -149,6 +185,7 @@ function Header(props) {
       open3: true,
       anchorEl3: event.currentTarget,
     })
+    handleOpenBackdrop()
   }
   function handleMenuClose3() {
     setState3({
@@ -161,6 +198,7 @@ function Header(props) {
       open4: true,
       anchorEl4: event.currentTarget,
     })
+    handleOpenBackdrop()
   }
   function handleMenuClose4() {
     setState4({
@@ -226,6 +264,7 @@ function Header(props) {
                 >
                   <Grid item xs={3}>
                     <Button
+                      className={classes.menuBtn}
                       // aria-owns={anchorEl1 ? "simple-menu-1" : undefined}
                       // aria-haspopup="true"
                       // onClick={handleClick1}
@@ -240,6 +279,7 @@ function Header(props) {
                   </Grid>
                   <Grid item xs={3}>
                     <Button
+                      className={classes.menuBtn}
                       aria-owns={state2.open2 ? "simple-menu-2" : undefined}
                       aria-haspopup="true"
                       // onClick={handleClick2}
@@ -261,10 +301,10 @@ function Header(props) {
                       Медицинские услуги
                     </Button>
                     <Popper
+                      className={classes.popper}
                       open={state2.open2}
                       anchorEl={state2.anchorEl2}
                       id="menu-list-grow-2"
-                      style={{ minWidth: "25vw" }}
                     >
                       <Paper>
                         <MenuList
@@ -310,6 +350,7 @@ function Header(props) {
                   </Grid>
                   <Grid item xs={3}>
                     <Button
+                      className={classes.menuBtn}
                       aria-owns={state3.anchorEl3 ? "simple-menu-3" : undefined}
                       aria-haspopup="true"
                       // onClick={handleMenuClose2}
@@ -329,10 +370,10 @@ function Header(props) {
                       Юридические услуги
                     </Button>
                     <Popper
+                      className={classes.popper}
                       open={state3.open3}
                       anchorEl={state3.anchorEl3}
                       id="menu-list-grow-3"
-                      style={{ minWidth: "25vw" }}
                     >
                       <Paper>
                         <MenuList
@@ -365,6 +406,7 @@ function Header(props) {
 
                   <Grid item xs={3}>
                     <Button
+                      className={classes.menuBtn}
                       aria-owns={
                         state4.anchorEl4 ? "simple-menu-4 " : undefined
                       }
@@ -386,10 +428,10 @@ function Header(props) {
                       Работа за границей
                     </Button>
                     <Popper
+                      className={classes.popper}
                       open={state4.open4}
                       anchorEl={state4.anchorEl4}
                       id="menu-list-grow-4"
-                      style={{ minWidth: "25vw" }}
                     >
                       <Paper>
                         <MenuList
@@ -432,6 +474,12 @@ function Header(props) {
           </Toolbar>
         </AppBar>
       </HideOnScroll>
+
+      <Backdrop
+        className={classes.backdrop}
+        open={openBackdrop}
+        onClick={handleCloseBackdrop}
+      />
 
       <Drawer onClose={handleDrawerClose} open={openDrawer} />
     </div>
