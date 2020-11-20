@@ -498,7 +498,7 @@ function Header(props) {
                             onClick={handleMenuClose4}
                             className={classes.menuItem}
                           >
-                            Наем медсестер
+                            Летние мероприятия
                           </MenuItem>
                           <MenuItem
                             onClick={handleMenuClose4}
