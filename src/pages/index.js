@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Link } from "gatsby"
 import { makeStyles } from "@material-ui/core/styles"
 
@@ -6,6 +6,7 @@ import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 import ComplexButtons from "../components/complexButtons"
+import { LanguageContext } from "../components/layout"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,6 +21,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function IndexPage() {
   const classes = useStyles()
+  //const { actLanguage } = useContext(LanguageContext)
 
   return (
     <Layout>

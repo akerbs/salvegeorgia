@@ -1,27 +1,40 @@
-import React from "react"
+import React, { useContext } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import ButtonBase from "@material-ui/core/ButtonBase"
 import Typography from "@material-ui/core/Typography"
+import { LanguageContext } from "../components/layout"
 
 const images = [
   {
     url: `../../1.jpg`,
-    title: "медицинское обслуживание",
+    titleRus: "Медицинское обслуживание",
+    titleGeo: "სამედიცინო მომსახურება",
+    titleDeu: "Medizinischer Dienst",
+    titleEng: "Medical service",
     width: "50%",
   },
   {
     url: `../../2.jpg`,
-    title: "Эстетическая медицина",
+    titleRus: "Эстетическая медицина",
+    titleGeo: "ესთეტიკური მედიცინა",
+    titleDeu: "Ästhetische Medizin",
+    titleEng: "Aesthetic medicine",
     width: "50%",
   },
   {
     url: `../../3.jpg`,
-    title: "Юридические услуги",
+    titleRus: "Юридические услуги",
+    titleGeo: "იურიდიული სერვისები",
+    titleDeu: "Juristische Dienstleistung",
+    titleEng: "Legal service",
     width: "50%",
   },
   {
     url: `../../4.jpg`,
-    title: "Работа за границей",
+    titleRus: "Работа за границей",
+    titleGeo: "საზღვარგარეთ დასაქმება",
+    titleDeu: "Arbeit im Ausland",
+    titleEng: "Work abroad",
     width: "50%",
   },
 ]
@@ -103,13 +116,14 @@ const useStyles = makeStyles(theme => ({
 
 export default function ComplexButtons() {
   const classes = useStyles()
+  const { actLanguage } = useContext(LanguageContext)
 
   return (
     <div className={classes.root}>
       {images.map(image => (
         <ButtonBase
           focusRipple
-          key={image.title}
+          key={image.titleEng}
           className={classes.image}
           focusVisibleClassName={classes.focusVisible}
           style={{
@@ -130,7 +144,16 @@ export default function ComplexButtons() {
               color="inherit"
               className={classes.imageTitle}
             >
-              {image.title}
+              {actLanguage === "DEU"
+                ? image.titleDeu
+                : actLanguage === "GEO"
+                ? image.titleGeo
+                : actLanguage === "RUS"
+                ? image.titleRus
+                : actLanguage === "ENG"
+                ? image.titleEng
+                : null}
+
               <span className={classes.imageMarked} />
             </Typography>
           </span>

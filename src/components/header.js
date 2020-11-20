@@ -25,6 +25,7 @@ import Popper from "@material-ui/core/Popper"
 import Paper from "@material-ui/core/Paper"
 import MenuList from "@material-ui/core/MenuList"
 import Backdrop from "@material-ui/core/Backdrop"
+import { LanguageContext } from "./layout"
 
 const window = require("global/window")
 
@@ -123,6 +124,7 @@ const useStyles = makeStyles(theme => ({
 function Header(props) {
   const classes = useStyles()
   const theme = useTheme()
+  const { actLanguage } = useContext(LanguageContext)
 
   const [openDrawer, setOpenDrawer] = useState(false)
 
@@ -266,10 +268,9 @@ function Header(props) {
                     handleMenuClose4(e)
                   }}
                 >
-                  <Grid item xs={3}>
+                  <Grid item xs={3} style={{ textAlign: "center" }}>
                     <Button
                       className={classes.menuBtn}
-                      style={{ left: "45%" }}
                       // aria-owns={anchorEl1 ? "simple-menu-1" : undefined}
                       // aria-haspopup="true"
                       // onClick={handleClick1}
@@ -279,10 +280,18 @@ function Header(props) {
                         handleMenuClose4(e)
                       }}
                     >
-                      О нас
+                      {actLanguage === "DEU"
+                        ? "Über uns"
+                        : actLanguage === "GEO"
+                        ? "ჩვენ შესახებ"
+                        : actLanguage === "RUS"
+                        ? "О нас"
+                        : actLanguage === "ENG"
+                        ? "About us"
+                        : null}
                     </Button>
                   </Grid>
-                  <Grid item xs={3}>
+                  <Grid item xs={3} style={{ textAlign: "center" }}>
                     <Button
                       className={classes.menuBtn}
                       aria-owns={state2.open2 ? "simple-menu-2" : undefined}
@@ -303,7 +312,15 @@ function Header(props) {
                         )
                       }
                     >
-                      Медицинские услуги
+                      {actLanguage === "DEU"
+                        ? "Patientenservice"
+                        : actLanguage === "GEO"
+                        ? "ჩვენ შესახებ"
+                        : actLanguage === "RUS"
+                        ? "Медицинские услуги"
+                        : actLanguage === "ENG"
+                        ? "Patient service"
+                        : null}
                     </Button>
                     <Popper
                       className={classes.popper}
@@ -337,43 +354,91 @@ function Header(props) {
                             onClick={handleMenuClose2}
                             className={classes.menuItem}
                           >
-                            Пластическая хирургия
+                            {actLanguage === "DEU"
+                              ? "Plastische Chirurgie"
+                              : actLanguage === "GEO"
+                              ? "პლასტიკური ქირურგია"
+                              : actLanguage === "RUS"
+                              ? " Пластическая хирургия"
+                              : actLanguage === "ENG"
+                              ? "Plastic surgery"
+                              : null}
                           </MenuItem>
                           <MenuItem
                             onClick={handleMenuClose2}
                             className={classes.menuItem}
                           >
-                            Косметологические процедуры
+                            {actLanguage === "DEU"
+                              ? "Kosmetologische Verfahren"
+                              : actLanguage === "GEO"
+                              ? "კოსმეტოლოგიური პროცედურები"
+                              : actLanguage === "RUS"
+                              ? "Косметологические процедуры"
+                              : actLanguage === "ENG"
+                              ? "Cosmetology procedures"
+                              : null}
                           </MenuItem>
                           <MenuItem
                             onClick={handleMenuClose2}
                             className={classes.menuItem}
                           >
-                            Зубные имплантаты
+                            {actLanguage === "DEU"
+                              ? "Zahnimplantate"
+                              : actLanguage === "GEO"
+                              ? "კბილის იმპლანტები"
+                              : actLanguage === "RUS"
+                              ? "Зубные имплантаты"
+                              : actLanguage === "ENG"
+                              ? "Dental implants"
+                              : null}
                           </MenuItem>
                           <MenuItem
                             onClick={handleMenuClose2}
                             className={classes.menuItem}
                           >
-                            Массаж
+                            {actLanguage === "DEU"
+                              ? "Massage"
+                              : actLanguage === "GEO"
+                              ? "მასაჟი"
+                              : actLanguage === "RUS"
+                              ? "Массаж"
+                              : actLanguage === "ENG"
+                              ? "Massage"
+                              : null}
                           </MenuItem>
                           <MenuItem
                             onClick={handleMenuClose2}
                             className={classes.menuItem}
                           >
-                            Бальнеологические процедуры
+                            {actLanguage === "DEU"
+                              ? "Balneologische Verfahren"
+                              : actLanguage === "GEO"
+                              ? "ბალნეოლოგიური პროცედურები"
+                              : actLanguage === "RUS"
+                              ? "Бальнеологические процедуры"
+                              : actLanguage === "ENG"
+                              ? "Balneological procedures"
+                              : null}
                           </MenuItem>
                           <MenuItem
                             onClick={handleMenuClose2}
                             className={classes.menuItem}
                           >
-                            Экстракорпоральное оплодотворение
+                            {actLanguage === "DEU"
+                              ? "In-vitro-Fertilisation"
+                              : actLanguage === "GEO"
+                              ? "ინვიტრო განაყოფიერება"
+                              : actLanguage === "RUS"
+                              ? "Экстракорпоральное оплодотворение"
+                              : actLanguage === "ENG"
+                              ? "In Vitro Fertilization"
+                              : null}
                           </MenuItem>
                         </MenuList>
                       </Paper>
                     </Popper>
                   </Grid>
-                  <Grid item xs={3}>
+                  <Grid item xs={3} style={{ textAlign: "center" }}>
                     <Button
                       className={classes.menuBtn}
                       aria-owns={state3.anchorEl3 ? "simple-menu-3" : undefined}
@@ -392,7 +457,15 @@ function Header(props) {
                         )
                       }
                     >
-                      Юридические услуги
+                      {actLanguage === "DEU"
+                        ? "Juristische Service"
+                        : actLanguage === "GEO"
+                        ? "იურიდიული სერვისები"
+                        : actLanguage === "RUS"
+                        ? "Юридические услуги"
+                        : actLanguage === "ENG"
+                        ? "Legal service"
+                        : null}
                     </Button>
                     <Popper
                       className={classes.popper}
@@ -422,20 +495,36 @@ function Header(props) {
                             onClick={handleMenuClose3}
                             className={classes.menuItem}
                           >
-                            Регистрация юридических лиц
+                            {actLanguage === "DEU"
+                              ? "Registrierung der juristischen Personen"
+                              : actLanguage === "GEO"
+                              ? "იურიდიუი პირებისრეგისტრაცია"
+                              : actLanguage === "RUS"
+                              ? "Регистрация юридических лиц"
+                              : actLanguage === "ENG"
+                              ? "Registration of legal entities"
+                              : null}
                           </MenuItem>
                           <MenuItem
                             onClick={handleMenuClose3}
                             className={classes.menuItem}
                           >
-                            Арбитраж
+                            {actLanguage === "DEU"
+                              ? "Schiedsgerichtsbarkeit"
+                              : actLanguage === "GEO"
+                              ? "არბიტრაჟი"
+                              : actLanguage === "RUS"
+                              ? "Арбитраж"
+                              : actLanguage === "ENG"
+                              ? "Arbitration"
+                              : null}
                           </MenuItem>
                         </MenuList>
                       </Paper>
                     </Popper>
                   </Grid>
 
-                  <Grid item xs={3}>
+                  <Grid item xs={3} style={{ textAlign: "center" }}>
                     <Button
                       className={classes.menuBtn}
                       aria-owns={
@@ -456,7 +545,15 @@ function Header(props) {
                         )
                       }
                     >
-                      Работа за границей
+                      {actLanguage === "DEU"
+                        ? "Arbeit im Ausland"
+                        : actLanguage === "GEO"
+                        ? "საზღვარგარეთ დასაქმება"
+                        : actLanguage === "RUS"
+                        ? "Работа за границей"
+                        : actLanguage === "ENG"
+                        ? "Work abroad"
+                        : null}
                     </Button>
                     <Popper
                       className={classes.popper}
@@ -486,25 +583,57 @@ function Header(props) {
                             onClick={handleMenuClose4}
                             className={classes.menuItem}
                           >
-                            Наем врачей
+                            {actLanguage === "DEU"
+                              ? "Ärzte einstellen"
+                              : actLanguage === "GEO"
+                              ? "ექიმების დასაქმება "
+                              : actLanguage === "RUS"
+                              ? "Наем врачей"
+                              : actLanguage === "ENG"
+                              ? "Hiring doctors"
+                              : null}
                           </MenuItem>
                           <MenuItem
                             onClick={handleMenuClose4}
                             className={classes.menuItem}
                           >
-                            Наем медсестер
+                            {actLanguage === "DEU"
+                              ? "Krankenschwestern einstellen"
+                              : actLanguage === "GEO"
+                              ? "ექთნების დასაქმება"
+                              : actLanguage === "RUS"
+                              ? "Наем медсестер"
+                              : actLanguage === "ENG"
+                              ? "Hiring nurses"
+                              : null}
                           </MenuItem>
                           <MenuItem
                             onClick={handleMenuClose4}
                             className={classes.menuItem}
                           >
-                            Летние мероприятия
+                            {actLanguage === "DEU"
+                              ? "Sommeraktivitäten"
+                              : actLanguage === "GEO"
+                              ? "საზაფხულო საქმიანობა"
+                              : actLanguage === "RUS"
+                              ? "Летние мероприятия"
+                              : actLanguage === "ENG"
+                              ? "Summer activities"
+                              : null}
                           </MenuItem>
                           <MenuItem
                             onClick={handleMenuClose4}
                             className={classes.menuItem}
                           >
-                            Для студентов
+                            {actLanguage === "DEU"
+                              ? "Für Studierende"
+                              : actLanguage === "GEO"
+                              ? "სტუდენტებისათვის"
+                              : actLanguage === "RUS"
+                              ? "Для студентов"
+                              : actLanguage === "ENG"
+                              ? "For students"
+                              : null}
                           </MenuItem>
                         </MenuList>
                       </Paper>

@@ -2,6 +2,8 @@ import React, { createContext, useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { makeStyles } from "@material-ui/core/styles"
+import { ThemeProvider } from "@material-ui/core/styles"
+import theme from "./theme"
 
 import Header from "./header"
 import "./layout.css"
@@ -64,8 +66,10 @@ const Layout = ({ children }) => {
           handleLanguageChange,
         }}
       >
-        <Header />
-        {children}
+        <ThemeProvider theme={theme}>
+          <Header />
+          {children}
+        </ThemeProvider>
       </LanguageContext.Provider>
     </div>
   )

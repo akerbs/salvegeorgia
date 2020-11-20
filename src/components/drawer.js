@@ -97,11 +97,19 @@ export default function (props) {
                   {/* <Slide in={props.open} timeout={1020} direction="up">
               <div>
                 <Fade in={props.open} timeout={2020}> */}
-                  <ListItem button key={"HOME"}>
+                  <ListItem button key={"About us"}>
                     <ListItemText
                       primary={
                         <Typography align="center" variant="h6">
-                          О нас
+                          {actLanguage === "DEU"
+                            ? "Über uns"
+                            : actLanguage === "GEO"
+                            ? "ჩვენ შესახებ"
+                            : actLanguage === "RUS"
+                            ? "О нас"
+                            : actLanguage === "ENG"
+                            ? "About us"
+                            : null}
                         </Typography>
                       }
                     />
@@ -119,11 +127,19 @@ export default function (props) {
                   {/* <Slide in={props.open} timeout={1040} direction="up">
               <div>
                 <Fade in={props.open} timeout={2040}> */}
-                  <ListItem button key={"ALL PRODUCTS"}>
+                  <ListItem button key={"Patient service"}>
                     <ListItemText
                       primary={
                         <Typography align="center" variant="h6">
-                          Услуги для пациентов
+                          {actLanguage === "DEU"
+                            ? "Patientenservice"
+                            : actLanguage === "GEO"
+                            ? "ჩვენ შესახებ"
+                            : actLanguage === "RUS"
+                            ? "Медицинские услуги"
+                            : actLanguage === "ENG"
+                            ? "Patient service"
+                            : null}
                         </Typography>
                       }
                     />
@@ -141,11 +157,19 @@ export default function (props) {
                   {/* <Slide in={props.open} timeout={1060} direction="up">
               <div>
                 <Fade in={props.open} timeout={2060}> */}
-                  <ListItem button key={"ABOUT US"}>
+                  <ListItem button key={"Legal service"}>
                     <ListItemText
                       primary={
                         <Typography align="center" variant="h6">
-                          Юридические услуги
+                          {actLanguage === "DEU"
+                            ? "Juristische Service"
+                            : actLanguage === "GEO"
+                            ? "იურიდიული სერვისები"
+                            : actLanguage === "RUS"
+                            ? "Юридические услуги"
+                            : actLanguage === "ENG"
+                            ? "Legal service"
+                            : null}
                         </Typography>
                       }
                     />
@@ -164,11 +188,19 @@ export default function (props) {
                   {/* <Slide in={props.open} timeout={1080} direction="up">
               <div>
                 <Fade in={props.open} timeout={2080}> */}
-                  <ListItem button key={"CONTACT US"}>
+                  <ListItem button key={"Work abroad"}>
                     <ListItemText
                       primary={
                         <Typography align="center" variant="h6">
-                          Трудоустройство за рубежом
+                          {actLanguage === "DEU"
+                            ? "Arbeit im Ausland"
+                            : actLanguage === "GEO"
+                            ? "საზღვარგარეთ დასაქმება"
+                            : actLanguage === "RUS"
+                            ? "Работа за границей"
+                            : actLanguage === "ENG"
+                            ? "Work abroad"
+                            : null}
                         </Typography>
                       }
                     />
