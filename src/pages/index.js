@@ -1,6 +1,7 @@
 import React, { useContext } from "react"
 import { Link } from "gatsby"
 import { makeStyles } from "@material-ui/core/styles"
+import Footer from "../components/footer"
 
 import Layout from "../components/layout"
 import Image from "../components/image"
@@ -30,6 +31,7 @@ export default function IndexPage() {
         <div className={classes.contentWrapper}>
           <ComplexButtons />
         </div>
+        <Footer />
       </div>
     </Layout>
   )
