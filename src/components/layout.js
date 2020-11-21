@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { makeStyles } from "@material-ui/core/styles"
 import { ThemeProvider } from "@material-ui/core/styles"
 import theme from "./theme"
-import Header from "./header"
+
 import "./layout.css"
 
 const useStyles = makeStyles(theme => ({
@@ -65,10 +65,7 @@ const Layout = ({ children }) => {
           handleLanguageChange,
         }}
       >
-        <ThemeProvider theme={theme}>
-          <Header />
-          {children}
-        </ThemeProvider>
+        <ThemeProvider theme={theme}>{children}</ThemeProvider>
       </LanguageContext.Provider>
     </div>
   )

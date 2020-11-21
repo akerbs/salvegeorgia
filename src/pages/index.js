@@ -1,6 +1,7 @@
 import React, { useContext } from "react"
 import { Link } from "gatsby"
 import { makeStyles } from "@material-ui/core/styles"
+import Header from "../components/header"
 import Footer from "../components/footer"
 
 import Layout from "../components/layout"
@@ -15,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     padding: 0,
   },
   contentWrapper: {
-    marginTop: "9vh",
+    marginTop: "12vh",
     padding: 0,
   },
 }))
@@ -28,6 +29,7 @@ export default function IndexPage() {
     <Layout>
       <div className={classes.root}>
         <SEO title="Home" />
+        <Header />
         <div className={classes.contentWrapper}>
           <ComplexButtons />
         </div>

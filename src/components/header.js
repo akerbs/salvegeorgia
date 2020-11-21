@@ -80,6 +80,7 @@ const useStyles = makeStyles(theme => ({
     display: "none",
   },
   toolbar: {
+    height: "12vh",
     // display: "flex",
     // justifyContent: "space-between",
     borderBottom: "4px solid black",
