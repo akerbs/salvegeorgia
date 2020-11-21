@@ -108,7 +108,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   backdrop: {
-    zIndex: 1,
+    zIndex: 5,
     color: "#fff",
   },
   popper: {
