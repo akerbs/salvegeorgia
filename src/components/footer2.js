@@ -9,11 +9,9 @@ import { LanguageContext } from "./layout"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    backgroundColor: theme.palette.primary.main,
+    // backgroundColor: theme.palette.primary.main,
     // maxWidth: "100%",
-
     // padding: "5% 2% 0% 7%",
-
     // [theme.breakpoints.down("sm")]: {
     //   padding: "18% 5% 0% 5%",
     // },
