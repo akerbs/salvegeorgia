@@ -19,10 +19,10 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.primary.main,
     maxWidth: "100%",
 
-    padding: "3% 2% 0% 7%",
+    padding: "5% 2% 0% 7%",
 
     [theme.breakpoints.down("sm")]: {
-      padding: "10% 5% 0% 5%",
+      padding: "18% 5% 0% 5%",
     },
   },
   // content: {
@@ -75,7 +75,7 @@ export default function Footer() {
         <Slide in={show} timeout={1000} direction="up">
           <div>
             {/* <Container maxWidth="md" className={classes.content}> */}
-            <Grid container className={classes.root} spacing={7}>
+            <Grid container spacing={7}>
               <Grid item md={5}>
                 <Typography variant="body2" className={classes.title}>
                   {actLanguage === "DEU"
