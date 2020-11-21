@@ -56,17 +56,17 @@ export default function Footer() {
   const [show, setShow] = useState(false)
   const { actLanguage } = useContext(LanguageContext)
 
-  function startInView() {
-    setShow(true)
-  }
-  function stopInView() {
-    setShow(false)
-  }
+  // function startInView() {
+  //   setShow(true)
+  // }
+  // function stopInView() {
+  //   setShow(false)
+  // }
 
-  useEffect(() => {
-    inView("#selector").once("enter", startInView)
-    inView.threshold(0.2)
-  })
+  // useEffect(() => {
+  //   inView("#selector").once("enter", startInView)
+  //   inView.threshold(0.2)
+  // })
 
   return (
     <div className={classes.root}>
