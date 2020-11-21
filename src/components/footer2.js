@@ -12,11 +12,11 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.primary.main,
     // maxWidth: "100%",
 
-    padding: "5% 2% 0% 7%",
+    // padding: "5% 2% 0% 7%",
 
-    [theme.breakpoints.down("sm")]: {
-      padding: "18% 5% 0% 5%",
-    },
+    // [theme.breakpoints.down("sm")]: {
+    //   padding: "18% 5% 0% 5%",
+    // },
   },
 }))
 
