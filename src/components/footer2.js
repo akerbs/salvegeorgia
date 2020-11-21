@@ -67,7 +67,7 @@ export default function Footer() {
   // })
 
   return (
-    <div className={classes.root}>
+    <>
       footer Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
       dolor neque distinctio id unde quae doloremque praesentium provident at
       temporibus.
@@ -185,6 +185,6 @@ export default function Footer() {
           </div>
         </Slide>
       </div> */}
-    </div>
+    </>
   )
 }
