@@ -16,9 +16,11 @@ const useStyles = makeStyles(theme => ({
     padding: 0,
   },
   contentWrapper: {
-    marginTop: "12vh",
-    // margin: "12vh 0 24vh 0",
     padding: 0,
+    marginTop: "12vh",
+    [theme.breakpoints.down("lg")]: {
+      marginTop: "6vh",
+    },
   },
 }))
 

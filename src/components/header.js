@@ -80,10 +80,10 @@ const useStyles = makeStyles(theme => ({
     display: "none",
   },
   toolbar: {
-    height: "12vh",
+    // height: "14vh",
     // display: "flex",
     // justifyContent: "space-between",
-    borderBottom: "4px solid black",
+    borderBottom: "0.5vh solid black",
   },
   logo: {
     // flexGrow: 1,
@@ -115,7 +115,7 @@ const useStyles = makeStyles(theme => ({
   popper: {
     minWidth: "25vw",
     zIndex: theme.zIndex.drawer + 99,
-    marginTop: 4,
+    marginTop: "0.5vh",
   },
   menuItem: {
     "&:hover": {
