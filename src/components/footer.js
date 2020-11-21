@@ -71,10 +71,15 @@ export default function Footer() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <div style={{ overflow: "hidden" }} id="selector">
+      footer Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
+      illum eaque vel possimus odio cupiditate quasi sit amet hic illo, deleniti
+      labore! Eius rem minus maiores ullam natus vel, officiis necessitatibus
+      vero fuga pariatur soluta! Fuga aspernatur excepturi dolor tenetur minus,
+      ipsum velit, tempore totam aliquid commodi voluptatem deserunt maiores.
+      {/* <div style={{ overflow: "hidden" }} id="selector">
         <Slide in={show} timeout={1000} direction="up">
           <div>
-            {/* <Container maxWidth="md" className={classes.content}> */}
+  
             <Grid container spacing={7}>
               <Grid item md={5}>
                 <Typography variant="body2" className={classes.title}>
@@ -159,10 +164,7 @@ export default function Footer() {
                 </Typography>
               </Grid>
               <Grid item md={4}>
-                {/* <Typography variant="body2" className={classes.title2}>
-                  JOIN OUR NEWSLETTER
-                </Typography> */}
-                {/* <SubscribeFormFooter /> */}
+       
                 <Typography variant="body2" className={classes.title}>
                   {actLanguage === "DEU"
                     ? "FOLGEN SIE UNS"
@@ -185,10 +187,10 @@ export default function Footer() {
             <div className={classes.lastLine}>
               © {new Date().getFullYear()}, salvegeorgia.com
             </div>
-            {/* </Container> */}
+
           </div>
         </Slide>
-      </div>
+      </div> */}
     </div>
   )
 }
