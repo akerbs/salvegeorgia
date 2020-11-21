@@ -4,7 +4,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import { makeStyles } from "@material-ui/core/styles"
 import { ThemeProvider } from "@material-ui/core/styles"
 import theme from "./theme"
-// import Footer from "./footer2"
 import Header from "./header"
 import "./layout.css"
 
@@ -69,7 +68,6 @@ const Layout = ({ children }) => {
         <ThemeProvider theme={theme}>
           <Header />
           {children}
-          {/* <Footer /> */}
         </ThemeProvider>
       </LanguageContext.Provider>
     </div>

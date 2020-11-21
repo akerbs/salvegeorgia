@@ -48,10 +48,10 @@ const useStyles = makeStyles(theme => ({
   },
   image: {
     position: "relative",
-    height: 300,
+    height: 330,
     [theme.breakpoints.down("xs")]: {
       width: "100% !important", // Overrides inline-style
-      height: 100,
+      height: 105,
     },
     "&:hover, &$focusVisible": {
       zIndex: 1,
