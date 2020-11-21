@@ -30,7 +30,7 @@ import { LanguageContext } from "./layout"
 const window = require("global/window")
 
 const drawerWidth = window.innerWidth <= 599 ? "100vw" : 450
-const logoMarginTop = window.innerWidth <= 959 ? "2%" : 0
+const logoMarginTop = window.innerWidth <= 959 ? "2.3%" : 0
 
 function HideOnScroll(props) {
   const { children } = props
@@ -79,15 +79,16 @@ const useStyles = makeStyles(theme => ({
   hide: {
     display: "none",
   },
-  logo: {
-    // flexGrow: 1,
-    // display: "inline",
-    marginTop: logoMarginTop,
-  },
   toolbar: {
     // display: "flex",
     // justifyContent: "space-between",
     borderBottom: "4px solid black",
+  },
+  logo: {
+    // flexGrow: 1,
+    // display: "inline",
+    marginTop: logoMarginTop,
+    color: "white",
   },
   link: {
     textDecoration: "none",
@@ -232,7 +233,7 @@ function Header(props) {
               >
                 <Typography variant="h6" className={classes.logo}>
                   <Link to="/" className={classes.link}>
-                    salvegeorgia.com
+                    <b> salvegeorgia.com</b>
                   </Link>
                 </Typography>
 
