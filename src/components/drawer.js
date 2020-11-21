@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography"
 import IconButton from "@material-ui/core/IconButton"
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft"
 import ChevronRightIcon from "@material-ui/icons/ChevronRight"
+import CloseIcon from "@material-ui/icons/Close"
 
 import Slide from "@material-ui/core/Slide"
 import Fade from "@material-ui/core/Fade"
@@ -34,7 +35,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
-    justifyContent: "space-between",
+    justifyContent: "flex-end",
   },
   drawerLink: {
     textDecoration: "none",
@@ -74,11 +75,7 @@ export default function (props) {
             <div>
               <Fade in={props.open} timeout={1600}>
                 <IconButton onClick={props.onClose}>
-                  {theme.direction === "ltr" ? (
-                    <ChevronLeftIcon />
-                  ) : (
-                    <ChevronRightIcon />
-                  )}
+                  <CloseIcon style={{ color: theme.palette.primary.main }} />
                 </IconButton>
               </Fade>
             </div>
