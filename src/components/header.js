@@ -139,16 +139,28 @@ function Header(props) {
   const handleDrawerOpen = () => {
     setOpenDrawer(true)
     document.body.style.position = "fixed"
-    document.body.style.top = `-${window.scrollY}px`
+    window.scrollTo(0, -5)
   }
   const handleDrawerClose = () => {
     setOpenDrawer(false)
     const scrollY = document.body.style.top
     document.body.style.position = ""
-
-    document.body.style.top = ""
-    window.scrollTo(0, parseInt(scrollY || "0") * -1)
+    window.scrollTo(0, -5)
   }
+
+  // const handleDrawerOpen = () => {
+  //   setOpenDrawer(true)
+  //   document.body.style.position = "fixed"
+  //   document.body.style.top = `-${window.scrollY}px`
+  // }
+  // const handleDrawerClose = () => {
+  //   setOpenDrawer(false)
+  //   const scrollY = document.body.style.top
+  //   document.body.style.position = ""
+
+  //   document.body.style.top = ""
+  //   window.scrollTo(0, parseInt(scrollY || "0") * -1)
+  // }
 
   const [state2, setState2] = useState({
     open2: false,
