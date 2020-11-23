@@ -31,7 +31,7 @@ import { HeaderHeightContext } from "./layout"
 const window = require("global/window")
 
 const drawerWidth = window.innerWidth <= 599 ? "100vw" : 450
-const logoMarginTop = window.innerWidth <= 959 ? "2.3%" : 0
+const logoMarginTop = window.innerWidth <= 959 ? "1%" : 0
 
 function HideOnScroll(props) {
   const { children } = props
@@ -89,6 +89,8 @@ const useStyles = makeStyles(theme => ({
   logo: {
     // flexGrow: 1,
     // display: "inline",
+    fontSize: "1.5rem",
+    fontFamily: "Fondamento",
     marginTop: logoMarginTop,
     color: "white",
   },
@@ -217,9 +219,7 @@ function Header(props) {
       anchorEl4: null,
     })
   }
-  const { handleHeaderHeightChange, headerHeight } = useContext(
-    HeaderHeightContext
-  )
+  const { handleHeaderHeightChange } = useContext(HeaderHeightContext)
   const measuredRef = React.useCallback(node => {
     if (node !== null) {
       handleHeaderHeightChange(node.getBoundingClientRect().height)

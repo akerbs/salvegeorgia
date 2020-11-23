@@ -22,7 +22,7 @@ const theme = createMuiTheme({
   },
 
   typography: {
-    fontFamily: ["Bebas", "Poppins", "sans-serif"].join(","),
+    fontFamily: ["sans-serif", "Fondamento"].join(","),
     fontSize: 14,
     body1bold: {
       fontWeight: "bold",
