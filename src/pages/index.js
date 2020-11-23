@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function IndexPage() {
   const classes = useStyles()
-  //const { actLanguage } = useContext(LanguageContext)
+  const { actLanguage } = useContext(LanguageContext)
   const { headerHeight } = useContext(HeaderHeightContext)
 
   return (
