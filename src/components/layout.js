@@ -63,9 +63,9 @@ const Layout = ({ children }) => {
     if (!!value) setHeaderHeight(value)
   }
 
-  useEffect(() => {
-    alert(`headerHeight:   ${Math.round(headerHeight)}px`)
-  }, [headerHeight])
+  // useEffect(() => {
+  //   alert(`headerHeight:   ${Math.round(headerHeight)}px`)
+  // }, [headerHeight])
 
   return (
     <div className={classes.root}>
