@@ -60,11 +60,11 @@ const Layout = ({ children }) => {
   const [headerHeight, setHeaderHeight] = useState(null)
 
   function handleHeaderHeightChange(value) {
-    setHeaderHeight(value)
+    if (!!value) setHeaderHeight(value)
   }
 
   useEffect(() => {
-    alert("!!!!", headerHeight)
+    alert(`headerHeight:   ${Math.round(headerHeight)}px`)
   }, [headerHeight])
 
   return (

@@ -220,20 +220,11 @@ function Header(props) {
   const { handleHeaderHeightChange, headerHeight } = useContext(
     HeaderHeightContext
   )
-
-  const [toolbarHeight, setToolbarHeight] = React.useState(null)
-
   const measuredRef = React.useCallback(node => {
     if (node !== null) {
-      setToolbarHeight(node.getBoundingClientRect().height)
+      handleHeaderHeightChange(node.getBoundingClientRect().height)
     }
   }, [])
-
-  useEffect(() => {
-    alert(`toolbarHeight: ${Math.round(toolbarHeight)}px`)
-    handleHeaderHeightChange(toolbarHeight)
-    alert(`headerHeight:   ${Math.round(headerHeight)}px`)
-  }, [toolbarHeight, headerHeight])
 
   return (
     <div className={classes.root}>
