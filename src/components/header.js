@@ -139,7 +139,7 @@ function Header(props) {
   const handleDrawerOpen = () => {
     setOpenDrawer(true)
     document.body.style.position = "fixed"
-    window.scrollTo(0, -5)
+    // window.scrollTo(0, -5)
   }
   const handleDrawerClose = () => {
     setOpenDrawer(false)
