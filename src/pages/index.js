@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 export default function IndexPage() {
   const classes = useStyles()
   //const { actLanguage } = useContext(LanguageContext)
-  const { toolbarHeight } = useContext(HeaderHeightContext)
+  const { headerHeight } = useContext(HeaderHeightContext)
 
   return (
     <Layout>
@@ -37,7 +37,7 @@ export default function IndexPage() {
         <Header />
         <div
           className={classes.contentWrapper}
-          style={{ marginTop: toolbarHeight }}
+          style={{ marginTop: headerHeight }}
         >
           <ComplexButtons />
         </div>
