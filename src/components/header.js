@@ -143,6 +143,7 @@ function Header(props) {
     setOpenDrawer(false)
     const scrollY = document.body.style.top
     document.body.style.position = ""
+    document.body.style.top = ""
   }
 
   const [state2, setState2] = useState({
