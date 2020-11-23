@@ -22,10 +22,7 @@ export default function IndexPageContent() {
   const { headerHeight } = useContext(HeaderHeightContext)
 
   return (
-    <div
-      className={classes.contentWrapper}
-      // style={{ marginTop: headerHeight }}
-    >
+    <div className={classes.contentWrapper} style={{ marginTop: "9vh" }}>
       {/* <div id="top" style={{ margin: 0, padding: 0 }}></div> */}
       <ComplexButtons />
     </div>
