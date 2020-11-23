@@ -1,5 +1,4 @@
 import React, { useContext } from "react"
-import { Link } from "gatsby"
 import { makeStyles } from "@material-ui/core/styles"
 import Header from "../components/header"
 import Footer from "../components/footer"
