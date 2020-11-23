@@ -28,6 +28,7 @@ import Backdrop from "@material-ui/core/Backdrop"
 import { LanguageContext } from "./layout"
 import { HeaderHeightContext } from "./layout"
 
+const document = require("global/document")
 const window = require("global/window")
 
 const drawerWidth = window.innerWidth <= 599 ? "100vw" : 450
@@ -143,7 +144,6 @@ function Header(props) {
     setOpenDrawer(false)
     const scrollY = document.body.style.top
     document.body.style.position = ""
-    document.body.style.top = ""
   }
 
   const [state2, setState2] = useState({
