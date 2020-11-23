@@ -18,6 +18,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export const LanguageContext = createContext()
+export const HeaderHeightContext = createContext()
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -56,6 +57,12 @@ const Layout = ({ children }) => {
     setActLanguage(event.target.value)
   }
 
+  const [headerHeight, setHeaderHeight] = useState(null)
+
+  function handleHeaderHeightChange(value) {
+    setHeaderHeight(value)
+  }
+
   return (
     <div className={classes.root}>
       <LanguageContext.Provider
@@ -65,7 +72,14 @@ const Layout = ({ children }) => {
           handleLanguageChange,
         }}
       >
-        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        <HeaderHeightContext.Provider
+          value={{
+            headerHeight,
+            handleHeaderHeightChange,
+          }}
+        >
+          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        </HeaderHeightContext.Provider>
       </LanguageContext.Provider>
     </div>
   )

@@ -26,6 +26,7 @@ import Paper from "@material-ui/core/Paper"
 import MenuList from "@material-ui/core/MenuList"
 import Backdrop from "@material-ui/core/Backdrop"
 import { LanguageContext } from "./layout"
+import { HeaderHeightContext } from "./layout"
 
 const window = require("global/window")
 
@@ -216,6 +217,20 @@ function Header(props) {
       anchorEl4: null,
     })
   }
+  const { handleHeaderHeightChange } = useContext(HeaderHeightContext)
+
+  const [toolbarHeight, setToolbarHeight] = React.useState(0)
+
+  const measuredRef = React.useCallback(node => {
+    if (node !== null) {
+      setToolbarHeight(node.getBoundingClientRect().height)
+    }
+  }, [])
+
+  useEffect(() => {
+    alert(`${Math.round(toolbarHeight)}px`)
+    handleHeaderHeightChange(toolbarHeight)
+  }, [toolbarHeight])
 
   return (
     <div className={classes.root}>
@@ -227,7 +242,7 @@ function Header(props) {
             [classes.appBarShiftToLeft]: openDrawer,
           })}
         >
-          <Toolbar className={classes.toolbar}>
+          <Toolbar className={classes.toolbar} ref={measuredRef}>
             <Grid container spacing={1}>
               <Grid
                 item

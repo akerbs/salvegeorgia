@@ -8,6 +8,7 @@ import Image from "../components/image"
 import SEO from "../components/seo"
 import ComplexButtons from "../components/complexButtons"
 import { LanguageContext } from "../components/layout"
+import { HeaderHeightContext } from "../components/layout"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -16,9 +17,10 @@ const useStyles = makeStyles(theme => ({
   },
   contentWrapper: {
     padding: 0,
-    marginTop: "12vh",
+
+    // marginTop: "12vh",
     [theme.breakpoints.down("lg")]: {
-      marginTop: "7vh",
+      // marginTop: "7vh",
     },
   },
 }))
@@ -26,13 +28,17 @@ const useStyles = makeStyles(theme => ({
 export default function IndexPage() {
   const classes = useStyles()
   //const { actLanguage } = useContext(LanguageContext)
+  const { toolbarHeight } = useContext(HeaderHeightContext)
 
   return (
     <Layout>
       <div className={classes.root}>
         <SEO title="Home" />
         <Header />
-        <div className={classes.contentWrapper}>
+        <div
+          className={classes.contentWrapper}
+          style={{ marginTop: toolbarHeight }}
+        >
           <ComplexButtons />
         </div>
         <Footer />
