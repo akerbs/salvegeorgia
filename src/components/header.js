@@ -217,9 +217,11 @@ function Header(props) {
       anchorEl4: null,
     })
   }
-  const { handleHeaderHeightChange } = useContext(HeaderHeightContext)
+  const { handleHeaderHeightChange, headerHeight } = useContext(
+    HeaderHeightContext
+  )
 
-  const [toolbarHeight, setToolbarHeight] = React.useState(0)
+  const [toolbarHeight, setToolbarHeight] = React.useState(null)
 
   const measuredRef = React.useCallback(node => {
     if (node !== null) {
@@ -228,9 +230,10 @@ function Header(props) {
   }, [])
 
   useEffect(() => {
-    alert(`${Math.round(toolbarHeight)}px`)
+    alert(`toolbarHeight: ${Math.round(toolbarHeight)}px`)
     handleHeaderHeightChange(toolbarHeight)
-  }, [toolbarHeight])
+    alert(`headerHeight:   ${Math.round(headerHeight)}px`)
+  }, [toolbarHeight, headerHeight])
 
   return (
     <div className={classes.root}>

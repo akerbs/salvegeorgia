@@ -63,6 +63,10 @@ const Layout = ({ children }) => {
     setHeaderHeight(value)
   }
 
+  useEffect(() => {
+    alert("!!!!", headerHeight)
+  }, [headerHeight])
+
   return (
     <div className={classes.root}>
       <LanguageContext.Provider
