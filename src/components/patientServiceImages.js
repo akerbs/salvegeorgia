@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const tileDataBig = [
+const tileDataMax = [
   {
     img: image1,
     title: "Image1",
@@ -115,7 +115,6 @@ const tileDataMin = [
 
 export default function () {
   const classes = useStyles()
-  const tileData = window.innerWidth <= 599 ? tileDataMin : tileDataBig
 
   return (
     <div className={classes.root}>
@@ -125,15 +124,26 @@ export default function () {
         cols={3}
         spacing={2}
       >
-        {tileData.map(tile => (
-          <GridListTile
-            key={tile.img}
-            cols={tile.cols || 1}
-            style={{ padding: 1, margin: 0 }}
-          >
-            <img src={tile.img} alt={tile.title} />
-          </GridListTile>
-        ))}
+        {window.innerWidth >= 600 &&
+          tileDataMax.map(tile => (
+            <GridListTile
+              key={tile.img}
+              cols={tile.cols || 1}
+              style={{ padding: 1, margin: 0 }}
+            >
+              <img src={tile.img} alt={tile.title} />
+            </GridListTile>
+          ))}
+        {window.innerWidth <= 599 &&
+          tileDataMin.map(tile => (
+            <GridListTile
+              key={tile.img}
+              cols={tile.cols || 1}
+              style={{ padding: 1, margin: 0 }}
+            >
+              <img src={tile.img} alt={tile.title} />
+            </GridListTile>
+          ))}
       </GridList>
     </div>
   )
