@@ -18,7 +18,7 @@ import image7 from "../images/medical_service/7.jpg"
 
 const window = require("global/window")
 
-const GridListWidth = window.innerWidth <= 599 ? "300" : 600
+const GridListWidth = window.innerWidth <= 599 ? 300 : 600
 
 const useStyles = makeStyles(theme => ({
   root: {
