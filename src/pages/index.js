@@ -21,8 +21,11 @@ export default function IndexPage() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    navigate("/")
   }, [])
+
+  window.onload = function () {
+    window.location.reload()
+  }
 
   return (
     <Layout>

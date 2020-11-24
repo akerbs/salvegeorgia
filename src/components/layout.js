@@ -4,7 +4,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import { makeStyles } from "@material-ui/core/styles"
 import { ThemeProvider } from "@material-ui/core/styles"
 import theme from "./theme"
-
 import "./layout.css"
 
 const useStyles = makeStyles(theme => ({
