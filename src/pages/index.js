@@ -9,6 +9,7 @@ import SEO from "../components/seo"
 import IndexPageContent from "../components/indexPageContent"
 import { navigate } from "gatsby"
 const window = require("global/window")
+const document = require("global/document")
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,7 +25,7 @@ export default function IndexPage() {
   }, [])
 
   window.onload = function () {
-    window.location.reload()
+    document.location.reload()
   }
 
   return (
