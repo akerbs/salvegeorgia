@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const tileData = [
+const tileDataBig = [
   {
     img: image1,
     title: "Image1",
@@ -43,27 +43,66 @@ const tileData = [
     cols: 2,
   },
   {
-    img: window.innerWidth <= 599 ? image2m : image2,
+    img: image2,
     title: "Image2",
     cols: 1,
   },
   {
-    img: window.innerWidth <= 599 ? image3m : image3,
+    img: image3,
     title: "Image3",
     cols: 1,
   },
   {
-    img: window.innerWidth <= 599 ? image4m : image4,
+    img: image4,
     title: "Image4",
     cols: 1,
   },
   {
-    img: window.innerWidth <= 599 ? image5m : image5,
+    img: image5,
     title: "Image5",
     cols: 1,
   },
   {
-    img: window.innerWidth <= 599 ? image6m : image6,
+    img: image6,
+    title: "Image6",
+    cols: 1,
+  },
+  {
+    img: image7,
+    title: "Image7",
+    cols: 2,
+  },
+]
+
+const tileDataMin = [
+  {
+    img: image1,
+    title: "Image1",
+    //  author: 'author',
+    cols: 2,
+  },
+  {
+    img: image2m,
+    title: "Image2",
+    cols: 1,
+  },
+  {
+    img: image3m,
+    title: "Image3",
+    cols: 1,
+  },
+  {
+    img: image4m,
+    title: "Image4",
+    cols: 1,
+  },
+  {
+    img: image5m,
+    title: "Image5",
+    cols: 1,
+  },
+  {
+    img: image6m,
     title: "Image6",
     cols: 1,
   },
@@ -76,6 +115,7 @@ const tileData = [
 
 export default function ImageGridList() {
   const classes = useStyles()
+  const tileData = window.innerWidth <= 599 ? tileDataMin : tileDataBig
 
   return (
     <div className={classes.root}>
