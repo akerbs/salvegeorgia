@@ -8,7 +8,7 @@ import { HeaderHeightContext } from "./layout"
 const useStyles = makeStyles(theme => ({
   contentWrapper: {
     padding: 0,
-    minHeight: "100vh",
+    // minHeight: "100vh",
     // marginTop: "12vh",
     [theme.breakpoints.down("lg")]: {
       // marginTop: "7vh",
