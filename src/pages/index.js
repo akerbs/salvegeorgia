@@ -25,7 +25,8 @@ export default function IndexPage() {
   }, [])
 
   window.onload = function () {
-    document.location.reload()
+    navigate("https://salvegeorgia.vercel.app/")
+    // document.location.reload()
   }
 
   return (
