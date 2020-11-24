@@ -49,7 +49,7 @@ export default function PatientServicePageContent() {
           : "Patient service"}
       </Typography>
       <Grid container spacing={3}>
-        <Grid item xs={6}>
+        <Grid item sm={6} xs={12}>
           <Typography variant="body1" color="primary">
             <List>
               <ListItem className={classes.listItem}>
@@ -121,7 +121,7 @@ export default function PatientServicePageContent() {
             </List>
           </Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item sm={6} xs={12}>
           <PatientServiceImages />
         </Grid>
       </Grid>

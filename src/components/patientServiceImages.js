@@ -11,6 +11,10 @@ import image5 from "../images/medical_service/5.jpg"
 import image6 from "../images/medical_service/6.jpg"
 import image7 from "../images/medical_service/7.jpg"
 
+const window = require("global/window")
+
+const GridListWidth = window.innerWidth <= 599 ? "300" : 600
+
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
@@ -20,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper,
   },
   gridList: {
-    width: 600,
+    width: GridListWidth,
     height: "auto",
     overflowY: "auto",
   },
@@ -82,11 +86,7 @@ export default function ImageGridList() {
             cols={tile.cols || 1}
             style={{ padding: 1, margin: 0 }}
           >
-            <img
-              src={tile.img}
-              alt={tile.title}
-              style={{ padding: 0, margin: 0 }}
-            />
+            <img src={tile.img} alt={tile.title} />
           </GridListTile>
         ))}
       </GridList>
