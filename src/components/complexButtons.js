@@ -54,7 +54,7 @@ const useStyles = makeStyles(theme => ({
       height: "20vh", // 105
     },
     "&:hover, &$focusVisible": {
-      zIndex: 1,
+      zIndex: 1000,
       "& $imageBackdrop": {
         opacity: 0.15,
       },
