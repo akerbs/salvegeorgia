@@ -83,7 +83,7 @@ const tileDataMin = [
   },
   {
     img: image2m,
-    title: "Image2",
+    title: "Image2m",
     cols: 1,
   },
   {
@@ -113,7 +113,7 @@ const tileDataMin = [
   },
 ]
 
-export default function ImageGridList() {
+export default function () {
   const classes = useStyles()
   const tileData = window.innerWidth <= 599 ? tileDataMin : tileDataBig
 
