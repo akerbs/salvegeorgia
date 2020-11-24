@@ -25,7 +25,7 @@ export default function IndexPage() {
   }, [])
 
   window.onload = function () {
-    navigate("https://salvegeorgia.vercel.app/")
+    // navigate("https://salvegeorgia.vercel.app/")
     // document.location.reload()
   }
 
@@ -35,7 +35,7 @@ export default function IndexPage() {
         <SEO title="Home" />
         <Header />
         <IndexPageContent />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </Layout>
   )
