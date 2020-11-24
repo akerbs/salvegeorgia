@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useContext } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Header from "../components/header"
 import Footer from "../components/footer"
@@ -6,16 +6,18 @@ import Footer from "../components/footer"
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
-import IndexPageContent from "../components/indexPageContent"
+import AboutUsPageContent from "../components/aboutUsPageContent"
+
 const window = require("global/window")
 
 const useStyles = makeStyles(theme => ({
   root: {
     padding: 0,
+    margin: 0,
   },
 }))
 
-export default function IndexPage() {
+export default function () {
   const classes = useStyles()
 
   useEffect(() => {
@@ -25,9 +27,9 @@ export default function IndexPage() {
   return (
     <Layout>
       <div className={classes.root}>
-        <SEO title="Home" />
+        <SEO title="About us" />
         <Header />
-        <IndexPageContent />
+        <AboutUsPageContent />
         <Footer />
       </div>
     </Layout>
