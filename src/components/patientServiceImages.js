@@ -5,10 +5,15 @@ import GridListTile from "@material-ui/core/GridListTile"
 
 import image1 from "../images/medical_service/1.jpg"
 import image2 from "../images/medical_service/2.jpg"
+import image2m from "../images/medical_service/2m.jpg"
 import image3 from "../images/medical_service/3.jpg"
+import image3m from "../images/medical_service/3m.jpg"
 import image4 from "../images/medical_service/4.jpg"
+import image4m from "../images/medical_service/4m.jpg"
 import image5 from "../images/medical_service/5.jpg"
+import image5m from "../images/medical_service/5m.jpg"
 import image6 from "../images/medical_service/6.jpg"
+import image6m from "../images/medical_service/6m.jpg"
 import image7 from "../images/medical_service/7.jpg"
 
 const window = require("global/window")
@@ -38,27 +43,27 @@ const tileData = [
     cols: 2,
   },
   {
-    img: image2,
+    img: window.innerWidth <= 599 ? image2m : image2,
     title: "Image2",
     cols: 1,
   },
   {
-    img: image3,
+    img: window.innerWidth <= 599 ? image3m : image3,
     title: "Image3",
     cols: 1,
   },
   {
-    img: image4,
+    img: window.innerWidth <= 599 ? image4m : image4,
     title: "Image4",
     cols: 1,
   },
   {
-    img: image5,
+    img: window.innerWidth <= 599 ? image5m : image5,
     title: "Image5",
     cols: 1,
   },
   {
-    img: image6,
+    img: window.innerWidth <= 599 ? image6m : image6,
     title: "Image6",
     cols: 1,
   },
