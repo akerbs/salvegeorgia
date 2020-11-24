@@ -54,7 +54,7 @@ const useStyles = makeStyles(theme => ({
       height: "20vh", // 105
     },
     "&:hover, &$focusVisible": {
-      zIndex: 1000,
+      zIndex: 1,
       "& $imageBackdrop": {
         opacity: 0.15,
       },
@@ -144,7 +144,7 @@ export default function ComplexButtons() {
               color="inherit"
               className={classes.imageTitle}
             >
-              {actLanguage === "DEU"
+              {/* {actLanguage === "DEU"
                 ? image.titleDeu
                 : actLanguage === "GEO"
                 ? image.titleGeo
@@ -152,7 +152,8 @@ export default function ComplexButtons() {
                 ? image.titleRus
                 : actLanguage === "ENG"
                 ? image.titleEng
-                : null}
+                : image.titleEng} */}
+              {image.titleEng}
 
               <span className={classes.imageMarked} />
             </Typography>

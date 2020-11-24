@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import ComplexButtons from "./complexButtons"
 import { LanguageContext } from "./layout"
 import { HeaderHeightContext } from "./layout"
-import { ReloadStateContext } from "./layout"
+
 const window = require("global/window")
 
 const useStyles = makeStyles(theme => ({

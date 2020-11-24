@@ -14,6 +14,7 @@ const document = require("global/document")
 const useStyles = makeStyles(theme => ({
   root: {
     padding: 0,
+    // minHeight: "100vh",
   },
 }))
 
