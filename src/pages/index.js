@@ -35,7 +35,7 @@ export default function IndexPage() {
         <SEO title="Home" />
         <Header />
         <IndexPageContent />
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </Layout>
   )
