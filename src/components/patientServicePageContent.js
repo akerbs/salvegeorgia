@@ -13,6 +13,7 @@ import Grid from "@material-ui/core/Grid"
 const useStyles = makeStyles(theme => ({
   contentWrapper: {
     minHeight: "100vh",
+    marginBottom: "5%",
     // marginTop: "12vh",
     [theme.breakpoints.down("lg")]: {
       // marginTop: "7vh",
