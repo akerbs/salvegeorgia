@@ -7,6 +7,7 @@ import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 import IndexPageContent from "../components/indexPageContent"
+import { navigate } from "gatsby"
 const window = require("global/window")
 
 const useStyles = makeStyles(theme => ({
@@ -20,6 +21,7 @@ export default function IndexPage() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
+    navigate("/")
   }, [])
 
   return (
