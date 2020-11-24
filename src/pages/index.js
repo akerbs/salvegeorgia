@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Header from "../components/header"
 import Footer from "../components/footer"
@@ -8,6 +8,7 @@ import Image from "../components/image"
 import SEO from "../components/seo"
 import IndexPageContent from "../components/indexPageContent"
 const window = require("global/window")
+const document = require("global/document")
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,7 +20,7 @@ export default function IndexPage() {
   const classes = useStyles()
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    // window.scrollTo(0, 0)
   }, [])
 
   return (
