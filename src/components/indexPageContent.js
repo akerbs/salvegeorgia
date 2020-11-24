@@ -25,7 +25,7 @@ export default function IndexPageContent() {
 
   return (
     <div className={classes.contentWrapper} style={{ marginTop: headerHeight }}>
-      {/* <ComplexButtons /> */}
+      <ComplexButtons />
     </div>
   )
 }
