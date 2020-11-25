@@ -1,27 +1,40 @@
-import React from "react"
+import React, { useContext } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import ButtonBase from "@material-ui/core/ButtonBase"
 import Typography from "@material-ui/core/Typography"
+import { LanguageContext } from "../components/layout"
 
 const images = [
   {
-    url: "/static/images/grid-list/breakfast.jpg",
-    title: "Breakfast",
+    url: `../../1.jpg`,
+    titleRus: "Медицинское обслуживание",
+    titleGeo: "სამედიცინო მომსახურება",
+    titleDeu: "Medizinischer Dienst",
+    titleEng: "Medical service",
     width: "50%",
   },
   {
-    url: "/static/images/grid-list/burgers.jpg",
-    title: "Burgers",
+    url: `../../2.jpg`,
+    titleRus: "Эстетическая медицина",
+    titleGeo: "ესთეტიკური მედიცინა",
+    titleDeu: "Ästhetische Medizin",
+    titleEng: "Aesthetic medicine",
     width: "50%",
   },
   {
-    url: "/static/images/grid-list/camera.jpg",
-    title: "Camera",
+    url: `../../3.jpg`,
+    titleRus: "Юридические услуги",
+    titleGeo: "იურიდიული სერვისები",
+    titleDeu: "Juristische Dienstleistung",
+    titleEng: "Legal service",
     width: "50%",
   },
   {
-    url: "/static/images/grid-list/camera.jpg",
-    title: "hdd",
+    url: `../../4.jpg`,
+    titleRus: "Работа за границей",
+    titleGeo: "საზღვარგარეთ დასაქმება",
+    titleDeu: "Arbeit im Ausland",
+    titleEng: "Work abroad",
     width: "50%",
   },
 ]
@@ -35,10 +48,10 @@ const useStyles = makeStyles(theme => ({
   },
   image: {
     position: "relative",
-    height: 200,
+    height: "50vh", //330
     [theme.breakpoints.down("xs")]: {
       width: "100% !important", // Overrides inline-style
-      height: 100,
+      height: "20vh", // 105
     },
     "&:hover, &$focusVisible": {
       zIndex: 1,
@@ -94,22 +107,23 @@ const useStyles = makeStyles(theme => ({
     // height: 3,
     // width: 18,
     // backgroundColor: theme.palette.common.white,
-    // position: 'absolute',
+    // position: "absolute",
     // bottom: -2,
-    // left: 'calc(50% - 9px)',
-    // transition: theme.transitions.create('opacity'),
+    // left: "calc(50% - 9px)",
+    // transition: theme.transitions.create("opacity"),
   },
 }))
 
-export default function () {
+export default function ComplexButtons() {
   const classes = useStyles()
+  const { actLanguage } = useContext(LanguageContext)
 
   return (
     <div className={classes.root}>
       {images.map(image => (
         <ButtonBase
           focusRipple
-          key={image.title}
+          key={image.titleEng}
           className={classes.image}
           focusVisibleClassName={classes.focusVisible}
           style={{
@@ -130,7 +144,16 @@ export default function () {
               color="inherit"
               className={classes.imageTitle}
             >
-              {image.title}
+              {actLanguage === "DEU"
+                ? image.titleDeu
+                : actLanguage === "GEO"
+                ? image.titleGeo
+                : actLanguage === "RUS"
+                ? image.titleRus
+                : actLanguage === "ENG"
+                ? image.titleEng
+                : image.titleEng}
+
               <span className={classes.imageMarked} />
             </Typography>
           </span>
