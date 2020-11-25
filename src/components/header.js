@@ -230,10 +230,11 @@ function Header(props) {
   }, [])
 
   return (
-    <div className={classes.root} ref={measuredRef}>
+    <div className={classes.root}>
       <CssBaseline />
       <HideOnScroll {...props}>
         <AppBar
+          ref={measuredRef}
           position="fixed"
           className={clsx(classes.appBar, {
             [classes.appBarShiftToLeft]: openDrawer,
