@@ -9,7 +9,7 @@ import IconButton from "@material-ui/core/IconButton"
 import MenuIcon from "@material-ui/icons/Menu"
 import useScrollTrigger from "@material-ui/core/useScrollTrigger"
 import Slide from "@material-ui/core/Slide"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import SelectLanguage from "./selectLanguage"
 import Drawer from "./drawer"
 import withWidth from "@material-ui/core/withWidth"
@@ -49,6 +49,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
     flexGrow: 1,
+    margin: 0,
   },
   appBar: {
     backgroundColor: theme.palette.primary.main,
@@ -139,7 +140,6 @@ function Header(props) {
   const handleDrawerOpen = () => {
     setOpenDrawer(true)
     document.body.style.position = "fixed"
-    // window.scrollTo(0, -5)
   }
   const handleDrawerClose = () => {
     setOpenDrawer(false)
@@ -223,9 +223,11 @@ function Header(props) {
     })
   }
   const { handleHeaderHeightChange } = useContext(HeaderHeightContext)
+
   const measuredRef = React.useCallback(node => {
     if (node !== null) {
       handleHeaderHeightChange(node.getBoundingClientRect().height)
+      // alert(node.getBoundingClientRect().height)
     }
   }, [])
 
@@ -234,12 +236,13 @@ function Header(props) {
       <CssBaseline />
       <HideOnScroll {...props}>
         <AppBar
+          ref={measuredRef}
           position="fixed"
           className={clsx(classes.appBar, {
             [classes.appBarShiftToLeft]: openDrawer,
           })}
         >
-          <Toolbar className={classes.toolbar} ref={measuredRef}>
+          <Toolbar className={classes.toolbar}>
             <Grid container spacing={1}>
               <Grid
                 item
@@ -289,7 +292,9 @@ function Header(props) {
                       className={classes.menuBtn}
                       // aria-owns={anchorEl1 ? "simple-menu-1" : undefined}
                       // aria-haspopup="true"
-                      // onClick={handleClick1}
+                      onClick={() => {
+                        navigate("/about")
+                      }}
                       onMouseOver={e => {
                         handleMenuClose2(e)
                         handleMenuClose3(e)
@@ -312,8 +317,9 @@ function Header(props) {
                       className={classes.menuBtn}
                       aria-owns={state2.open2 ? "simple-menu-2" : undefined}
                       aria-haspopup="true"
-                      // onClick={handleClick2}
-                      // onMouseOver={handleClick2}
+                      onClick={() => {
+                        navigate("/patient-service")
+                      }}
                       onMouseOver={e => {
                         handleMenuOpen2(e)
                         handleMenuClose3(e)
@@ -459,7 +465,9 @@ function Header(props) {
                       className={classes.menuBtn}
                       aria-owns={state3.anchorEl3 ? "simple-menu-3" : undefined}
                       aria-haspopup="true"
-                      // onClick={handleMenuClose2}
+                      onClick={() => {
+                        navigate("/legal-service")
+                      }}
                       onMouseOver={e => {
                         handleMenuOpen3(e)
                         handleMenuClose2(e)
@@ -547,7 +555,9 @@ function Header(props) {
                         state4.anchorEl4 ? "simple-menu-4 " : undefined
                       }
                       aria-haspopup="true"
-                      // onClick={handleClick4}
+                      onClick={() => {
+                        navigate("/work-abroad")
+                      }}
                       onMouseOver={e => {
                         handleMenuOpen4(e)
                         handleMenuClose2(e)

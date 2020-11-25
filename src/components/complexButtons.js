@@ -43,12 +43,12 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
     flexWrap: "wrap",
-    minWidth: 300,
-    width: "100%",
+    // minWidth: 300,
+    width: "100vw",
   },
   image: {
     position: "relative",
-    height: "50vh", //330
+    height: "48vh", //330
     [theme.breakpoints.down("xs")]: {
       width: "100% !important", // Overrides inline-style
       height: "20vh", // 105
@@ -105,12 +105,12 @@ const useStyles = makeStyles(theme => ({
   },
   imageMarked: {
     // height: 3,
-    width: 18,
-    backgroundColor: theme.palette.common.white,
-    position: "absolute",
-    bottom: -2,
-    left: "calc(50% - 9px)",
-    transition: theme.transitions.create("opacity"),
+    // width: 18,
+    // backgroundColor: theme.palette.common.white,
+    // position: "absolute",
+    // bottom: -2,
+    // left: "calc(50% - 9px)",
+    // transition: theme.transitions.create("opacity"),
   },
 }))
 
@@ -152,7 +152,7 @@ export default function ComplexButtons() {
                 ? image.titleRus
                 : actLanguage === "ENG"
                 ? image.titleEng
-                : null}
+                : image.titleEng}
 
               <span className={classes.imageMarked} />
             </Typography>
