@@ -2,8 +2,6 @@ import React, { useEffect, useContext } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Header from "../components/header"
 import Footer from "../components/footer"
-
-import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 import AboutUsPageContent from "../components/aboutUsPageContent"
@@ -25,13 +23,13 @@ export default function () {
   }, [])
 
   return (
-    <Layout>
+    <>
       <div className={classes.root}>
         <SEO title="About us" />
         <Header />
         <AboutUsPageContent />
         <Footer />
       </div>
-    </Layout>
+    </>
   )
 }
