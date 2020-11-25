@@ -86,7 +86,7 @@ export default function (props) {
             <Fade in={props.open} timeout={2000}>
               <List>
                 <Link
-                  to="/about"
+                  to="#"
                   className={classes.drawerLink}
                   // activeClassName={classes.active}
                   onClick={props.onClose}
@@ -116,7 +116,7 @@ export default function (props) {
             </Slide> */}
                 </Link>
                 <Link
-                  to="/patient-service"
+                  to="#"
                   className={classes.drawerLink}
                   // activeClassName={classes.active}
                   onClick={props.onClose}
@@ -146,7 +146,7 @@ export default function (props) {
             </Slide> */}
                 </Link>
                 <Link
-                  to="/legal-service"
+                  to="#"
                   className={classes.drawerLink}
                   // activeClassName={classes.active}
                   onClick={props.onClose}
@@ -177,7 +177,7 @@ export default function (props) {
                 </Link>
 
                 <Link
-                  to="/work-abroad"
+                  to="#"
                   className={classes.drawerLink}
                   // activeClassName={classes.active}
                   onClick={props.onClose}
