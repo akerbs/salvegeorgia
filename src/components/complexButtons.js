@@ -144,7 +144,8 @@ export default function ComplexButtons() {
               color="inherit"
               className={classes.imageTitle}
             >
-              {actLanguage === "DEU"
+              {image.titleEng}
+              {/* {actLanguage === "DEU"
                 ? image.titleDeu
                 : actLanguage === "GEO"
                 ? image.titleGeo
@@ -152,7 +153,7 @@ export default function ComplexButtons() {
                 ? image.titleRus
                 : actLanguage === "ENG"
                 ? image.titleEng
-                : image.titleEng}
+                : image.titleEng} */}
 
               <span className={classes.imageMarked} />
             </Typography>
