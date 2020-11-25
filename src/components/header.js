@@ -49,6 +49,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
     flexGrow: 1,
+    margin: 0,
   },
   appBar: {
     backgroundColor: theme.palette.primary.main,
@@ -233,12 +234,13 @@ function Header(props) {
       <CssBaseline />
       <HideOnScroll {...props}>
         <AppBar
+          ref={measuredRef}
           position="fixed"
           className={clsx(classes.appBar, {
             [classes.appBarShiftToLeft]: openDrawer,
           })}
         >
-          <Toolbar className={classes.toolbar} ref={measuredRef}>
+          <Toolbar className={classes.toolbar}>
             <Grid container spacing={1}>
               <Grid
                 item

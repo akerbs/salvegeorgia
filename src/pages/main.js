@@ -12,6 +12,7 @@ const document = require("global/document")
 const useStyles = makeStyles(theme => ({
   root: {
     padding: 0,
+    margin: 0,
     // minHeight: "100vh",
   },
 }))
@@ -24,7 +25,7 @@ export default function MainPage() {
   }, [])
 
   window.onload = function () {
-    navigate("/")
+    // navigate("/")
     // document.location.reload()
   }
 

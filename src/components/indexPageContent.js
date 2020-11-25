@@ -10,6 +10,7 @@ const window = require("global/window")
 const useStyles = makeStyles(theme => ({
   contentWrapper: {
     padding: 0,
+
     // minHeight: "100vh",
     // marginTop: "12vh",
     [theme.breakpoints.down("lg")]: {
@@ -26,7 +27,10 @@ export default function IndexPageContent() {
   return (
     <div
       className={classes.contentWrapper}
-      style={{ margin: "0.01%", marginTop: headerHeight }}
+      style={{
+        margin: 0,
+        marginTop: headerHeight,
+      }}
     >
       <ComplexButtons />
     </div>
